@@ -15,12 +15,12 @@ public class SpriteAnim : MonoBehaviour
 		if(!AnimatedGameObject){
 			AnimatedGameObject = this.gameObject;
 		}
-		PlayAnimation (0, 0.25f);
+		PlayAnimation (0);
 	}
 
-	public void PlayAnimation (int ID, float secPerFrame)
+	public void PlayAnimation (int ID)
 	{
-		SecsPerFrame = secPerFrame;
+		SecsPerFrame = AnimationSets[ID].speed;
 		StopCoroutine ("AnimateSprite");
 		//Add as much ID as necessary. Each is a different animation.
 		switch (ID) {
@@ -47,8 +47,9 @@ public class SpriteAnim : MonoBehaviour
 		}
 	}
 }
-
+[System.Serializable]
 public class AnimSpriteSet{
 	public string AnimationName;
 	public Sprite[] Anim_Sprites;
+	public float speed;
 }
