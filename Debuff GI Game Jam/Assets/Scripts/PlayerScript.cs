@@ -8,8 +8,8 @@ public class PlayerScript : MonoBehaviour {
 	public GameObject shadow;
 	public GameObject[] shadows;
 	public float baseSpeed = 1.0F;
-	float speedMod = 1;
-	int numShadows = 10;
+	float speedMod = 0.5F;
+	int numShadows = 30;
 	public Image[] hearts; 
 	ArrayList trail = new ArrayList();
 	bool rewinding = false;
@@ -30,7 +30,7 @@ public class PlayerScript : MonoBehaviour {
 	float momentum = 0;
 	// Update is called once per frame
 	void UpdateHealthBar(){
-		int currentHealth = GetComponent<LivingEntity> ().currentHealth;
+		int currentHealth = GetComponent<LivingEntity>().currentHealth;
 		if (currentHealth > 1) {
 			hearts [0].sprite = fullHeart;
 		} else if (currentHealth == 1) {
@@ -108,8 +108,11 @@ public class PlayerScript : MonoBehaviour {
 			//transform.position = ((TimeShadow)trail[trail.Count - 1]).pos;
 			//trail.Clear ();
 		}
-		if (Input.GetMouseButtonDown (1)) {
+		if (Input.GetMouseButtonDown (0)) {
 			GetComponent<SpriteAnim> ().PlayTemp (1, 1);
+		}
+		if (Input.GetMouseButtonDown (1)) {
+			ShadowAttack ();
 		}
 		int i = trail.Count;
 		for (int j = 1; j <= shadows.Length; j++) {
@@ -132,9 +135,15 @@ public class PlayerScript : MonoBehaviour {
 			}
 			return;
 		}
+		//timeSinceUpdate += Time.fixedDeltaTime;
+		/*if (timeSinceUpdate < 0.05) {
+			
+			return;
+		}*/
+		//timeSinceUpdate = 0;
 		trail.Insert (0, new TimeShadow(transform.position, ((Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position).x > 0));
-		if (trail.Count > 100) {
-			trail.RemoveRange (100, trail.Count - 100);
+		if (trail.Count > 300) {
+			trail.RemoveRange (300, trail.Count - 300);
 		}
 	}
 	
@@ -162,6 +171,22 @@ public class PlayerScript : MonoBehaviour {
 		public bool flip;
 
 	}
-	void Hurt(){
+	public void Hurt(){
+		GetComponent<SpriteAnim> ().PlayTemp (2, 1);
+	}
+	void ShadowAttack(){
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+
+		foreach (GameObject enemy in enemies){
+			for(int i = shadows.Length - 1; i >= 0; i--) {
+				GameObject shadow = shadows [i];
+				if (Mathf.Abs ((enemy.transform.position - shadow.transform.position).magnitude) < 1) {
+					shadow.GetComponent<SpriteAnim> ().PlayTemp (1, 1);
+					enemy.GetComponent<LivingEntity> ().currentHealth--;
+					break;
+				}
+			}
+		}
+
 	}
 }
