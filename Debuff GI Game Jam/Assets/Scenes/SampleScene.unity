@@ -587,5 +587,6 @@ MonoBehaviour:
   projectile: {fileID: 50944455113251744, guid: 6ec4e63d65ad1af49a4cd8ae898e31f0,
     type: 2}
   projectileSpeed: 100
-  bulletLifespan: 4
+  bulletLifespan: 1
+  aggroDistance: 4
   shootDelay: 60
