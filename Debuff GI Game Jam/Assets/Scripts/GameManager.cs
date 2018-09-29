@@ -24,4 +24,4 @@ public class GameManager {
 	public void Pause(bool paused) {
 	}
 		
-	}
+}

@@ -54,7 +54,7 @@ public class JellyScript : MonoBehaviour {
 				//knocks back the target
 				Debug.Log(col.gameObject.transform.position);
 				Debug.Log(this.transform.position);
-				col.gameObject.transform.position -= (this.transform.position-col.gameObject.transform.position)*3;
+				col.gameObject.transform.position -= (this.transform.position-col.gameObject.transform.position);
 				
 			}
 		}

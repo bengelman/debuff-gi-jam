@@ -22,6 +22,9 @@ public class SpriteAnim : MonoBehaviour
 		PlayAnimation (0);
 	}
 	public void PlayTemp(int ID, int loops){
+		if (gameObject.tag.Equals ("Shadow")) {
+			GameObject.Find ("Character").GetComponent<SpriteRenderer> ().enabled = false;
+		}
 		StopCoroutine ("AnimateSprite");
 		this.loops = loops;
 		SecsPerFrame = AnimationSets[ID].speed;
@@ -32,6 +35,7 @@ public class SpriteAnim : MonoBehaviour
 	}
 	public void PlayAnimation (int ID)
 	{
+		
 		SecsPerFrame = AnimationSets[ID].speed;
 		StopCoroutine ("AnimateSprite");
 		prevID = ID;
@@ -57,6 +61,9 @@ public class SpriteAnim : MonoBehaviour
 					loops--;
 					if (loops == 0) {
 						ID = prevID;
+						if (gameObject.tag.Equals ("Shadow")) {
+							GameObject.Find ("Character").GetComponent<SpriteRenderer> ().enabled = true;
+						}
 					}
 				}
 				Cur_SpriteID = 0;
