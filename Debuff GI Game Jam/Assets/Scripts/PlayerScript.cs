@@ -7,6 +7,7 @@ public class PlayerScript : MonoBehaviour {
 	public PolygonCollider2D collisionDetection;
 	public GameObject shadow;
 	public GameObject[] shadows;
+	public Camera mainCamera;
 	public float baseSpeed = 1.0F;
 	float speedMod = 0.5F;
 	int numShadows = 30;
@@ -69,6 +70,7 @@ public class PlayerScript : MonoBehaviour {
 			return;
 		}
 		UpdateHealthBar ();
+		UpdateCamera ();
 		//FixedUpdate ();
 		Vector2 mouse = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position;
 
@@ -187,6 +189,10 @@ public class PlayerScript : MonoBehaviour {
 				}
 			}
 		}
+
+	}
+	void UpdateCamera(){
+		
 
 	}
 }

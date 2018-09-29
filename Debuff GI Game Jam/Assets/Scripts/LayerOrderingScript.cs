@@ -15,6 +15,6 @@ public class LayerOrderingScript : MonoBehaviour {
 	}
 	void LateUpdate()
 	{
-		GetComponent<SpriteRenderer>().sortingOrder = -(int)(transform.position.y * 100);
+		GetComponent<SpriteRenderer>().sortingOrder = 10000000-(int)(transform.position.y * 100);
 	}
 }
