@@ -70,7 +70,6 @@ public class PlayerScript : MonoBehaviour {
 			return;
 		}
 		UpdateHealthBar ();
-		UpdateCamera ();
 		//FixedUpdate ();
 		Vector2 mouse = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position;
 
@@ -112,6 +111,7 @@ public class PlayerScript : MonoBehaviour {
 		}
 		if (Input.GetMouseButtonDown (0)) {
 			GetComponent<SpriteAnim> ().PlayTemp (1, 1);
+			BasicAttack ();
 		}
 		if (Input.GetMouseButtonDown (1)) {
 			ShadowAttack ();
@@ -184,15 +184,26 @@ public class PlayerScript : MonoBehaviour {
 				GameObject shadow = shadows [i];
 				if (Mathf.Abs ((enemy.transform.position - shadow.transform.position).magnitude) < 1) {
 					shadow.GetComponent<SpriteAnim> ().PlayTemp (1, 1);
-					enemy.GetComponent<LivingEntity> ().currentHealth--;
+					enemy.GetComponent<LivingEntity> ().Hurt();
 					break;
 				}
 			}
 		}
 
 	}
-	void UpdateCamera(){
-		
 
+	
+	// the left click attack of player
+	// hurts enemies within a certain distance of player
+	void BasicAttack() {
+		float range = 3.0f;
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+		
+		foreach (GameObject enemy in enemies) {
+			float distance = Vector3.Distance(gameObject.transform.position, enemy.transform.position);
+			if (distance <= range) {
+				enemy.GetComponent<LivingEntity>().Hurt();
+			}
+		}
 	}
 }

@@ -16,8 +16,8 @@ public class EnemyFollowerScript : MonoBehaviour {
 
 		left_offset = (float)rnd.NextDouble()*6-3;
 		right_offset = (float)rnd.NextDouble()*6-3;
-		Debug.Log(left_offset);
-		Debug.Log(right_offset);
+		// Debug.Log(left_offset);
+		// Debug.Log(right_offset);
 	}
 	
 	// Update is called once per frame

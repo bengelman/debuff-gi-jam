@@ -19,8 +19,8 @@ public class JellyScript : MonoBehaviour {
 		rnd = new System.Random(GetInstanceID()  +(int)System.DateTime.Now.TimeOfDay.TotalMilliseconds);
 		left_offset = (float)rnd.NextDouble()*6-3;
 		right_offset = (float)rnd.NextDouble()*6-3;
-		Debug.Log(left_offset);
-		Debug.Log(right_offset);
+		// Debug.Log(left_offset);
+		// Debug.Log(right_offset);
 	}
 	
 	// Update is called once per frame
@@ -52,8 +52,8 @@ public class JellyScript : MonoBehaviour {
 			if (col.gameObject.GetComponent<PlayerScript> ()) { // if it has a player script
 				col.gameObject.GetComponent<LivingEntity> ().Hurt ();
 				//knocks back the target
-				Debug.Log(col.gameObject.transform.position);
-				Debug.Log(this.transform.position);
+				// Debug.Log(col.gameObject.transform.position);
+				// Debug.Log(this.transform.position);
 				col.gameObject.transform.position -= (this.transform.position-col.gameObject.transform.position);
 				
 			}
