@@ -966,6 +966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jellyfish: {fileID: 1266860837989960, guid: 758ed69c584c1974999702520e833c7e, type: 2}
+  lizard: {fileID: 1676693926949308, guid: 513bcebaacabe554d8f9256095cfd762, type: 2}
 --- !u!1 &1685222094
 GameObject:
   m_ObjectHideFlags: 0
