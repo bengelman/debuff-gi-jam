@@ -28,6 +28,10 @@ public class PlayerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (rewinding) {
+			if (trail.Count < 1) {
+				rewinding = false;
+				return;
+			}
 			TimeShadow shadow = (TimeShadow)trail [0];
 			GetComponent<SpriteRenderer> ().flipX = shadow.flip;
 			transform.position = shadow.pos;
@@ -60,7 +64,7 @@ public class PlayerScript : MonoBehaviour {
 			if (accelLimit > 1) {
 				momentum = 0;
 			}
-			if (accelLimit < 25) {
+			if (accelLimit < 10) {
 				accelLimit+=Time.deltaTime * 1;
 
 			}

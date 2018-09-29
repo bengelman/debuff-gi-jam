@@ -8,6 +8,10 @@ public class SpriteAnim : MonoBehaviour
 	public AnimSpriteSet[] AnimationSets;
 	private int Cur_SpriteID;
 	private float SecsPerFrame = 0.25f;
+	public int loops = 0;
+	public int prevID = 0;
+
+
 
 	void Awake ()
 	{
@@ -17,11 +21,17 @@ public class SpriteAnim : MonoBehaviour
 		}
 		PlayAnimation (0);
 	}
+	public void PlayTemp(int ID, int loops){
+		this.loops = loops;
+		Cur_SpriteID = 0;
+		StartCoroutine ("AnimateSprite", ID);
 
+	}
 	public void PlayAnimation (int ID)
 	{
 		SecsPerFrame = AnimationSets[ID].speed;
 		StopCoroutine ("AnimateSprite");
+		prevID = ID;
 		//Add as much ID as necessary. Each is a different animation.
 		switch (ID) {
 		default:
@@ -40,6 +50,12 @@ public class SpriteAnim : MonoBehaviour
 			= AnimationSets[ID].Anim_Sprites[Cur_SpriteID];
 			Cur_SpriteID++;
 			if (Cur_SpriteID >= AnimationSets[ID].Anim_Sprites.Length) {
+				if (loops > 0) {
+					loops--;
+					if (loops == 0) {
+						ID = prevID;
+					}
+				}
 				Cur_SpriteID = 0;
 			}
 			StartCoroutine ("AnimateSprite", ID);
