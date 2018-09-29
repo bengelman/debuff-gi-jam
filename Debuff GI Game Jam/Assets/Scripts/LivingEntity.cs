@@ -22,7 +22,7 @@ public class LivingEntity : MonoBehaviour {
 	public void Hurt(){
 		currentHealth--;
 		if (GetComponent<PlayerScript> ()) {
-			
+			GetComponent<PlayerScript> ().Hurt ();
 		}
 	}
 }
