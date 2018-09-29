@@ -171,17 +171,19 @@ public class PlayerScript : MonoBehaviour {
 		public bool flip;
 
 	}
-	void Hurt(){
+	public void Hurt(){
+		GetComponent<SpriteAnim> ().PlayTemp (2, 1);
 	}
 	void ShadowAttack(){
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 
 		foreach (GameObject enemy in enemies){
-			foreach (GameObject shadow in shadows) {
+			for(int i = shadows.Length - 1; i >= 0; i--) {
+				GameObject shadow = shadows [i];
 				if (Mathf.Abs ((enemy.transform.position - shadow.transform.position).magnitude) < 1) {
 					shadow.GetComponent<SpriteAnim> ().PlayTemp (1, 1);
 					enemy.GetComponent<LivingEntity> ().currentHealth--;
-					return;
+					break;
 				}
 			}
 		}

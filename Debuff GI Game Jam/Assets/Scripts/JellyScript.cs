@@ -14,6 +14,7 @@ public class JellyScript : MonoBehaviour {
 	System.Random rnd;
 	// Use this for initialization
 	void Start () {
+
 		Character = GameObject.Find("Character");
 		rnd = new System.Random(GetInstanceID()  +(int)System.DateTime.Now.TimeOfDay.TotalMilliseconds);
 		left_offset = (float)rnd.NextDouble()*6-3;
