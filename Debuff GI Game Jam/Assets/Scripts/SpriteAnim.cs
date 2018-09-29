@@ -22,8 +22,11 @@ public class SpriteAnim : MonoBehaviour
 		PlayAnimation (0);
 	}
 	public void PlayTemp(int ID, int loops){
+		StopCoroutine ("AnimateSprite");
 		this.loops = loops;
+		SecsPerFrame = AnimationSets[ID].speed;
 		Cur_SpriteID = 0;
+
 		StartCoroutine ("AnimateSprite", ID);
 
 	}

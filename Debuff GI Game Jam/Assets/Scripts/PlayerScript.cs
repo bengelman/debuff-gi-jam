@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour {
 	public PolygonCollider2D collisionDetection;
@@ -9,8 +10,10 @@ public class PlayerScript : MonoBehaviour {
 	public float baseSpeed = 1.0F;
 	float speedMod = 1;
 	int numShadows = 10;
+	public Image[] hearts; 
 	ArrayList trail = new ArrayList();
 	bool rewinding = false;
+	public Sprite fullHeart, halfHeart, noHeart;
 	// Use this for initialization
 	void Start () {
 		shadows = new GameObject[numShadows];
@@ -26,6 +29,30 @@ public class PlayerScript : MonoBehaviour {
 
 	float momentum = 0;
 	// Update is called once per frame
+	void UpdateHealthBar(){
+		int currentHealth = GetComponent<LivingEntity> ().currentHealth;
+		if (currentHealth > 1) {
+			hearts [0].sprite = fullHeart;
+		} else if (currentHealth == 1) {
+			hearts [0].sprite = halfHeart;
+		} else {
+			hearts [0].sprite = noHeart;
+		}
+		if (currentHealth > 3) {
+			hearts [1].sprite = fullHeart;
+		} else if (currentHealth == 3) {
+			hearts [1].sprite = halfHeart;
+		} else {
+			hearts [1].sprite = noHeart;
+		}
+		if (currentHealth > 5) {
+			hearts [2].sprite = fullHeart;
+		} else if (currentHealth == 5) {
+			hearts [2].sprite = halfHeart;
+		} else {
+			hearts [2].sprite = noHeart;
+		}
+	}
 	void Update () {
 		if (rewinding) {
 			if (trail.Count < 1) {
@@ -41,6 +68,7 @@ public class PlayerScript : MonoBehaviour {
 				rewinding = false;
 			return;
 		}
+		UpdateHealthBar ();
 		//FixedUpdate ();
 		Vector2 mouse = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position;
 
@@ -79,6 +107,9 @@ public class PlayerScript : MonoBehaviour {
 			rewinding = true;
 			//transform.position = ((TimeShadow)trail[trail.Count - 1]).pos;
 			//trail.Clear ();
+		}
+		if (Input.GetMouseButtonDown (1)) {
+			GetComponent<SpriteAnim> ().PlayTemp (1, 1);
 		}
 		int i = trail.Count;
 		for (int j = 1; j <= shadows.Length; j++) {
@@ -123,5 +154,6 @@ public class PlayerScript : MonoBehaviour {
 		public bool flip;
 
 	}
-		
+	void Hurt(){
+	}
 }

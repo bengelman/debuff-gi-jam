@@ -18,4 +18,12 @@ public class JellyScript : MonoBehaviour {
 	{
 		GetComponent<SpriteRenderer>().sortingOrder = -(int)(transform.position.y * 100);
 	}
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		if (col.gameObject.GetComponent<LivingEntity> ()) {
+			if (col.gameObject.GetComponent<PlayerScript> ()) {
+				col.gameObject.GetComponent<LivingEntity> ().Hurt ();
+			}
+		}
+	}
 }

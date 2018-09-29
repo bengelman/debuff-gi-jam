@@ -13,10 +13,16 @@ public class LivingEntity : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (currentHealth <= 0) {
-			
+			Death ();
 		}
 	}
 	void Death(){
 		gameObject.SetActive (false);
+	}
+	public void Hurt(){
+		currentHealth--;
+		if (GetComponent<PlayerScript> ()) {
+			
+		}
 	}
 }
