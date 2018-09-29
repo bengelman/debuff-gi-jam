@@ -31,6 +31,7 @@ public class PlayerScript : MonoBehaviour {
 			TimeShadow shadow = (TimeShadow)trail [0];
 			GetComponent<SpriteRenderer> ().flipX = shadow.flip;
 			transform.position = shadow.pos;
+			//trail.Remove (0);
 			trail.RemoveRange (0, Mathf.Max(1, Mathf.Min(trail.Count - 1, 20)));
 			if (trail.Count == 0)
 				rewinding = false;
@@ -65,9 +66,10 @@ public class PlayerScript : MonoBehaviour {
 			}
 		}
 
-		mouse *= ((Time.deltaTime * baseSpeed) * speedMod) * (1 + Mathf.Sqrt(momentum * 0.1F));
-		Vector2 newVec = mouse + (Vector2)transform.position;
-		transform.position = newVec;
+		mouse *= ((baseSpeed) * speedMod) * (1 + Mathf.Sqrt(momentum * 0.1F));
+
+		GetComponent<Rigidbody2D> ().velocity = mouse;
+		//transform.position = newVec;
 
 		if (Input.anyKeyDown) {
 			rewinding = true;
@@ -76,16 +78,15 @@ public class PlayerScript : MonoBehaviour {
 		}
 		int i = trail.Count;
 		for (int j = 1; j <= shadows.Length; j++) {
-			if (i > j) {
-				shadow.SetActive (true);
-				Vector3 position = ((TimeShadow)trail [((trail.Count - 1) / shadows.Length) * j]).pos;
-				shadows [j - 1].GetComponent<SpriteRenderer> ().flipX = ((TimeShadow)trail [((trail.Count) / shadows.Length) * j]).flip;
+			if (i >= j) {
+				shadows[j - 1].SetActive (true);
+				Vector3 position = ((TimeShadow)trail [(((trail.Count - 1) * j) / shadows.Length)]).pos;
+					shadows [j - 1].GetComponent<SpriteRenderer> ().flipX = ((TimeShadow)trail [(((trail.Count - 1) * j) / shadows.Length)]).flip;
 				shadows[j - 1].transform.position = position;
 			} else {
-				shadow.SetActive (false);
+				shadows[j - 1].SetActive (false);
 			}
 		}
-
 	}
 	void FixedUpdate () {
 		if (rewinding)
