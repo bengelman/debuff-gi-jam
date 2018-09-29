@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour {
 	public Image[] hearts; 
 	ArrayList trail = new ArrayList();
 	bool rewinding = false;
+	public bool lockOnShadow = false;
 	public Sprite fullHeart, halfHeart, noHeart;
 	// Use this for initialization
 	void Start () {
@@ -70,6 +71,13 @@ public class PlayerScript : MonoBehaviour {
 			return;
 		}
 		UpdateHealthBar ();
+		if (lockOnShadow) {
+			foreach (GameObject obj in shadows) {
+				
+			}
+		} else {
+			mainCamera.transform.localPosition = new Vector3 (0, 0, mainCamera.transform.localPosition.z);
+		}
 		//FixedUpdate ();
 		Vector2 mouse = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position;
 
@@ -183,6 +191,7 @@ public class PlayerScript : MonoBehaviour {
 			for(int i = shadows.Length - 1; i >= 0; i--) {
 				GameObject shadow = shadows [i];
 				if (Mathf.Abs ((enemy.transform.position - shadow.transform.position).magnitude) < 1) {
+					momentum = 0;
 					shadow.GetComponent<SpriteAnim> ().PlayTemp (1, 1);
 					enemy.GetComponent<LivingEntity> ().Hurt();
 					break;
