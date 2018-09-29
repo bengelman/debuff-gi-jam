@@ -1094,11 +1094,13 @@ MonoBehaviour:
   collisionDetection: {fileID: 0}
   shadow: {fileID: 643139521}
   shadows: []
+  mainCamera: {fileID: 1685222096}
   baseSpeed: 5
   hearts:
   - {fileID: 599196416}
   - {fileID: 1828457055}
   - {fileID: 1804835400}
+  lockOnShadow: 0
   fullHeart: {fileID: 21300000, guid: e798c59baa5931c4da869d0e084b9677, type: 3}
   halfHeart: {fileID: 21300000, guid: cc7a798440ae9a94b897b1d9dd335573, type: 3}
   noHeart: {fileID: 21300000, guid: 5b8a6c39fc41fd44e8d5398569a73870, type: 3}
