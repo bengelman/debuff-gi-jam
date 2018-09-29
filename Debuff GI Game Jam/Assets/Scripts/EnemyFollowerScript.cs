@@ -1,4 +1,4 @@
-﻿﻿using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +17,6 @@ public class EnemyFollowerScript : MonoBehaviour {
 		right_offset = (float)rnd.NextDouble()*6-3;
 		Debug.Log(left_offset);
 		Debug.Log(right_offset);
-		
 	}
 	
 	// Update is called once per frame
@@ -25,7 +24,7 @@ public class EnemyFollowerScript : MonoBehaviour {
 		// find target
 			targetPosition = new Vector2(
 			Player.transform.position.x-this.left_offset,
-			 Player.transform.position.y+this.right_offset);
+			Player.transform.position.y+this.right_offset);
 		
 		// move towards player
 		transform.position = Vector2.MoveTowards(
