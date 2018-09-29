@@ -15,7 +15,7 @@ public class canvas_script : MonoBehaviour {
 		if(delay <= 0){
 			Instantiate(jellyfish,new Vector3(0, 0, 0),new Quaternion(0,0,0,0));
 			delay = 100;
-			Debug.Log("new fish");
+			//Debug.Log("new fish");
 		} else{
 			delay-=1;
 		}

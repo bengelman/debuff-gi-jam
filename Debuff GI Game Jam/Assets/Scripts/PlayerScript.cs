@@ -182,7 +182,7 @@ public class PlayerScript : MonoBehaviour {
 				GameObject shadow = shadows [i];
 				if (Mathf.Abs ((enemy.transform.position - shadow.transform.position).magnitude) < 1) {
 					shadow.GetComponent<SpriteAnim> ().PlayTemp (1, 1);
-					enemy.GetComponent<LivingEntity> ().currentHealth--;
+					enemy.GetComponent<LivingEntity> ().Hurt();
 					break;
 				}
 			}
