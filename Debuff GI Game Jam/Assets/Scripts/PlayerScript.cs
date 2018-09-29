@@ -8,8 +8,8 @@ public class PlayerScript : MonoBehaviour {
 	public GameObject shadow;
 	public GameObject[] shadows;
 	public float baseSpeed = 1.0F;
-	float speedMod = 1;
-	int numShadows = 10;
+	float speedMod = 0.5F;
+	int numShadows = 30;
 	public Image[] hearts; 
 	ArrayList trail = new ArrayList();
 	bool rewinding = false;
@@ -132,9 +132,15 @@ public class PlayerScript : MonoBehaviour {
 			}
 			return;
 		}
+		//timeSinceUpdate += Time.fixedDeltaTime;
+		/*if (timeSinceUpdate < 0.05) {
+			
+			return;
+		}*/
+		//timeSinceUpdate = 0;
 		trail.Insert (0, new TimeShadow(transform.position, ((Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position).x > 0));
-		if (trail.Count > 100) {
-			trail.RemoveRange (100, trail.Count - 100);
+		if (trail.Count > 300) {
+			trail.RemoveRange (300, trail.Count - 300);
 		}
 	}
 	
@@ -163,5 +169,14 @@ public class PlayerScript : MonoBehaviour {
 
 	}
 	void Hurt(){
+	}
+	void ShadowAttack(){
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+		foreach (GameObject enemy in enemies){
+			foreach (GameObject shadow in shadows) {
+				//if (enemy.transform.position - shadow.pos < 
+			}
+		}
+
 	}
 }
