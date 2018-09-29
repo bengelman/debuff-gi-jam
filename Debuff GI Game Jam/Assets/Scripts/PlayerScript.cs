@@ -30,7 +30,7 @@ public class PlayerScript : MonoBehaviour {
 	float momentum = 0;
 	// Update is called once per frame
 	void UpdateHealthBar(){
-		int currentHealth = GetComponent<LivingEntity> ().currentHealth;
+		int currentHealth = GetComponent<LivingEntity>().currentHealth;
 		if (currentHealth > 1) {
 			hearts [0].sprite = fullHeart;
 		} else if (currentHealth == 1) {
