@@ -1,4 +1,4 @@
-﻿﻿using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,11 +10,12 @@ public class EnemyFollowerScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Player = GameObject.Find("Player");
+		Player = GameObject.Find("Character");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
 		// find player position
 		playerPosition = new Vector2(
 			Player.transform.position.x
