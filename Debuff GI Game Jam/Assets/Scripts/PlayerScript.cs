@@ -91,6 +91,12 @@ public class PlayerScript : MonoBehaviour {
 	void FixedUpdate () {
 		if (rewinding)
 			return;
+		if (GetComponent<Rigidbody2D> ().velocity.magnitude < 0.5) {
+			if (trail.Count > 0) {
+				trail.RemoveRange (trail.Count - Mathf.Min(trail.Count, 7), Mathf.Min(trail.Count, 7));
+			}
+			return;
+		}
 		trail.Insert (0, new TimeShadow(transform.position, ((Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position).x > 0));
 		if (trail.Count > 100) {
 			trail.RemoveRange (100, trail.Count - 100);
