@@ -15,7 +15,7 @@ public class EnemyShooterScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Player = GameObject.Find("Player");
+		Player = GameObject.Find("Character");
 	}
 		
 	// Update is called once per frame
