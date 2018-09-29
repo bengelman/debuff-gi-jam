@@ -103,7 +103,7 @@ public class PlayerScript : MonoBehaviour {
 		GetComponent<Rigidbody2D> ().velocity = mouse;
 		//transform.position = newVec;
 
-		if (Input.GetKeyDown(KeyCode.Space)) {
+		if (Input.GetButtonDown("Vertical")) {
 			rewinding = true;
 			//transform.position = ((TimeShadow)trail[trail.Count - 1]).pos;
 			//trail.Clear ();
@@ -137,6 +137,14 @@ public class PlayerScript : MonoBehaviour {
 			trail.RemoveRange (100, trail.Count - 100);
 		}
 	}
+	
+	/*
+	void OnCollisionEnter2D(Collision2D coll) {
+		if (coll.gameObject.name == "Enemy"){
+			Destroy(coll.gameObject);
+		}
+	}*/
+	
 	void LateUpdate()
 	{
 		GetComponent<SpriteRenderer>().sortingOrder = -(int)(transform.position.y * 100);
