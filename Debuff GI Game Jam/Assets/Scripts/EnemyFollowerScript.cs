@@ -12,7 +12,8 @@ public class EnemyFollowerScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Player = GameObject.Find("Character");
-		System.Random rnd = new System.Random(GetInstanceID());
+		System.Random rnd = new System.Random(GetInstanceID()  +(int)System.DateTime.Now.TimeOfDay.TotalMilliseconds);
+
 		left_offset = (float)rnd.NextDouble()*6-3;
 		right_offset = (float)rnd.NextDouble()*6-3;
 		Debug.Log(left_offset);
