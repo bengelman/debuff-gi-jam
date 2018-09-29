@@ -108,8 +108,11 @@ public class PlayerScript : MonoBehaviour {
 			//transform.position = ((TimeShadow)trail[trail.Count - 1]).pos;
 			//trail.Clear ();
 		}
-		if (Input.GetMouseButtonDown (1)) {
+		if (Input.GetMouseButtonDown (0)) {
 			GetComponent<SpriteAnim> ().PlayTemp (1, 1);
+		}
+		if (Input.GetMouseButtonDown (1)) {
+			ShadowAttack ();
 		}
 		int i = trail.Count;
 		for (int j = 1; j <= shadows.Length; j++) {
@@ -172,9 +175,14 @@ public class PlayerScript : MonoBehaviour {
 	}
 	void ShadowAttack(){
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+
 		foreach (GameObject enemy in enemies){
 			foreach (GameObject shadow in shadows) {
-				//if (enemy.transform.position - shadow.pos < 
+				if (Mathf.Abs ((enemy.transform.position - shadow.transform.position).magnitude) < 1) {
+					shadow.GetComponent<SpriteAnim> ().PlayTemp (1, 1);
+					enemy.GetComponent<LivingEntity> ().currentHealth--;
+					return;
+				}
 			}
 		}
 
