@@ -2,8 +2,10 @@ fileFormatVersion: 2
 guid: 089ec240bd156a54e91b23f5723c6453
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Player_0
-    21300002: Player_1
+    21300000: PC_0
+    21300002: PC_1
+    21300004: PC_2
+    21300006: PC_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -97,41 +99,81 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_0
+      name: PC_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 66
-        width: 25
-        height: 27
+        x: 10
+        y: 33
+        width: 18
+        height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87a9fabd231f78341bb067371be085d6
+      spriteID: 49717822db2801e4cbe7aa2c31cf81a2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_1
+      name: PC_1
       rect:
         serializedVersion: 2
-        x: 34
-        y: 65
-        width: 25
-        height: 27
+        x: 42
+        y: 33
+        width: 18
+        height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e5ec1e4eb5b2564cb9803f4de0ceefe
+      spriteID: c3d2989b2a0bd234f839cf00733111c3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC_2
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4bd3674ed8a6f94fba518332555879e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC_3
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c877a62761db282449e9f2c3ca4c9997
       vertices: []
       indices: 
       edges: []
@@ -139,7 +181,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b7764d0b314d2e24fb46994c92175397
+    spriteID: 3b2cfb0818ae0524ea33656c2be1a5fb
     vertices: []
     indices: 
     edges: []
