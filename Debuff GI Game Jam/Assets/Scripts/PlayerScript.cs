@@ -110,6 +110,7 @@ public class PlayerScript : MonoBehaviour {
 		}
 		if (Input.GetMouseButtonDown (0)) {
 			GetComponent<SpriteAnim> ().PlayTemp (1, 1);
+			BasicAttack ();
 		}
 		if (Input.GetMouseButtonDown (1)) {
 			ShadowAttack ();
@@ -188,5 +189,19 @@ public class PlayerScript : MonoBehaviour {
 			}
 		}
 
+	}
+	
+	// the left click attack of player
+	// hurts enemies within a certain distance of player
+	void BasicAttack() {
+		float range = 3.0f;
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+		
+		foreach (GameObject enemy in enemies) {
+			float distance = Vector3.Distance(gameObject.transform.position, enemy.transform.position);
+			if (distance <= range) {
+				enemy.GetComponent<LivingEntity>().Hurt();
+			}
+		}
 	}
 }

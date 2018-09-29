@@ -27,11 +27,11 @@ public class EnemyShooterScript : MonoBehaviour {
 		
 		// if player is within certain distance, shoot projectile at player
 		if (distance <= aggroDistance) {
-			shootPlayer(myPosition, playerPosition);
+			ShootPlayer(myPosition, playerPosition);
 		}
 	}
 	
-	void shootPlayer (Vector2 start, Vector2 target) {
+	void ShootPlayer (Vector2 start, Vector2 target) {
 		// check if certain time has passed before enemy can shoot
 		if (delay <= 0) {
 			// create bullet
