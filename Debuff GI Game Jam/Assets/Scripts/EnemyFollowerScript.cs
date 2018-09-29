@@ -26,11 +26,4 @@ public class EnemyFollowerScript : MonoBehaviour {
 			, playerPosition
 			, speed * Time.deltaTime);
 	}
-	
-	/*
-	void OnCollisionStay2D(Collision2D coll) {
-		if (coll.gameObject.tag == "Player") { 
-			Destroy (coll.gameObject);
-		}
-	}*/
 }
