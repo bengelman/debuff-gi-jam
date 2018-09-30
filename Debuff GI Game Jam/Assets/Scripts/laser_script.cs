@@ -18,10 +18,10 @@ public class laser_script : MonoBehaviour {
 			SpriteRenderer spr = GetComponent<SpriteRenderer>();
 			spr.sprite = alterante_sprite;
 		}
-		if(delay == -600){
+		if(delay == -50){
 			Destroy(gameObject);
 		}
-		Debug.Log(delay);
+		//Debug.Log(delay);
 	}
     void OnTriggerStay2D(Collider2D coll)
     {

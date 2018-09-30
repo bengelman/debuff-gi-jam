@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//this class is terrible software engineering. It is called "playerscript" but for some reason handles levels as well. This might need to be fixed, just saying.
+
+
 public class PlayerScript : MonoBehaviour {
 	public PolygonCollider2D collisionDetection;
 	public GameObject shadow;
@@ -50,8 +53,8 @@ public class PlayerScript : MonoBehaviour {
 		new Level("Oasis", new Vector2(0,-4), new string[]{"triangle pair"}, new Vector2[]{}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
 
 		new Level("BossFight", new Vector2(-2, -7),
-			new string[]{"Prefabs/jellyfish_prefab"},
-			new Vector2[]{new Vector2(14, 21)})
+			new string[]{"Prefabs/lizard_prefab"},
+			new Vector2[]{new Vector2(-2, 13)})
 
 	};
 	public int level = 0;
