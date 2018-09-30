@@ -293,7 +293,7 @@ public class PlayerScript : MonoBehaviour {
 			GetComponent<LivingEntity> ().currentHealth--;
 			GetComponent<SpriteAnim> ().PlayTemp (2, 1);
 			if (GetComponent<LivingEntity> ().currentHealth <= 0) {
-				GetComponent<SpriteAnim> ().PlayAnimation (2);
+				GetComponent<SpriteAnim> ().PlayTemp (2, 1);
 			}
 			invulnerability = 30;
 		}
