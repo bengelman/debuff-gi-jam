@@ -67,7 +67,7 @@ public class SpriteAnim : MonoBehaviour
 					loops--;
 					if (loops == 0) {
 						if (gameObject.GetComponent<LivingEntity> ()) {
-							if (gameObject.GetComponent<LivingEntity> ().currentHealth <= 0) {
+							if (gameObject.GetComponent<LivingEntity> ().currentHealth <= 0 && AnimationSets[ID].AnimationName.Equals("Death")) {
 								gameObject.SetActive (false);
 							}
 						}

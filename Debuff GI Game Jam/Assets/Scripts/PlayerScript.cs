@@ -30,7 +30,7 @@ public class PlayerScript : MonoBehaviour {
 	 * */
 	protected Level[] levels = new Level[]{
 
-		new Level("Oasis", new Vector2(0,0), new string[]{"triangle pair"}, new Vector2[]{}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
+		new Level("Oasis", new Vector2(0,-4), new string[]{"triangle pair"}, new Vector2[]{}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
 		
 		new Level("Oasis", new Vector2(-4, 1),
 		new string[]{"Prefabs/gem_prefab 1", "Prefabs/jellyfish_prefab"}, // "Prefabs/wurm_prefab"},
@@ -147,7 +147,9 @@ public class PlayerScript : MonoBehaviour {
 	public bool firstFlag = false;
 	void Update () {
 		levelUpdate ();
-
+		if (invulnerable > 0) {
+			invulnerable = Mathf.Max (0, invulnerable - Time.deltaTime);
+		}
 		if (rewinding) {
 			if (trail.Count < 1) {
 				rewinding = false;
@@ -214,16 +216,16 @@ public class PlayerScript : MonoBehaviour {
 		GetComponent<Rigidbody2D> ().velocity = mouse;
 		//transform.position = newVec;
 
-		if (Input.GetButtonDown("Vertical")) {
+		if (Input.GetButtonDown("Rewind")) {
 			rewinding = true;
 			//transform.position = ((TimeShadow)trail[trail.Count - 1]).pos;
 			//trail.Clear ();
 		}
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButtonDown (0) && !attacking && !lockOnShadow) {
 			GetComponent<SpriteAnim> ().PlayTemp (1, 1);
 			BasicAttack ();
 		}
-		if (Input.GetMouseButtonDown (1) && trail.Count > 290) {
+		if (Input.GetMouseButtonDown (1) && trail.Count > 290 && !attacking && !lockOnShadow) {
 			ShadowAttack ();
 		}
 		int i = trail.Count;
@@ -285,11 +287,13 @@ public class PlayerScript : MonoBehaviour {
 		public bool flip;
 
 	}
+	float invulnerable = 0;
 	public void Hurt(){
-		if (stunned || attacking)
+		if (stunned || attacking || invulnerable > 0)
 			return;
 		GetComponent<LivingEntity> ().currentHealth--;
 		GetComponent<SpriteAnim> ().PlayTemp (2, 1);
+		invulnerable = 0.5f;
 		if (GetComponent<LivingEntity> ().currentHealth <= 0) {
 			GetComponent<SpriteAnim> ().PlayTemp (2, 1);
 		}
