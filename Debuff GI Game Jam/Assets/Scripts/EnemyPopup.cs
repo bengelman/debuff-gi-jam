@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyPopup : MonoBehaviour {
 	
-	public float upTime = 3.0f; // time spent up
+	public float upTime = 6.0f; // time spent up
 	public Sprite upSprite;
-	public float downTime = 3.0f; // time spent down
+	public float downTime = 6.0f; // time spent down
 	public Sprite downSprite;
 	
-	private bool isUp = true;
+	public bool isUp = true;
 	private float upTimeDelay;
 	private float downTimeDelay;
 
