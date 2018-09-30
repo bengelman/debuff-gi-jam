@@ -60,20 +60,20 @@ public class EnemyPopup : MonoBehaviour {
 	void OnCollisionStay2D(Collision2D col)
 	{	
 		// do nothing if inactive
-		if (isUp == false) {return;}
-		
-		// damage player
-		if (col.gameObject.GetComponent<LivingEntity> ()) {
-			if (col.gameObject.GetComponent<PlayerScript> ()) { // if it has a player script
-				col.gameObject.GetComponent<LivingEntity> ().Hurt ();
-				//knocks back the target
-				// Debug.Log(col.gameObject.transform.position);
-				// Debug.Log(this.transform.position);
-				Vector2 knockback = -(this.transform.position-col.gameObject.transform.position);
-				knockback.Normalize ();
-				knockback *= 3;
-				col.gameObject.GetComponent<Rigidbody2D>().velocity = (knockback);
-				col.gameObject.GetComponent<PlayerScript> ().Stun (0.5F);
+		if (isUp){			
+			// damage player
+			if (col.gameObject.GetComponent<LivingEntity> ()) {
+				if (col.gameObject.GetComponent<PlayerScript> ()) { // if it has a player script
+					col.gameObject.GetComponent<LivingEntity> ().Hurt ();
+					//knocks back the target
+					// Debug.Log(col.gameObject.transform.position);
+					// Debug.Log(this.transform.position);
+					Vector2 knockback = -(this.transform.position-col.gameObject.transform.position);
+					knockback.Normalize ();
+					knockback *= 3;
+					col.gameObject.GetComponent<Rigidbody2D>().velocity = (knockback);
+					col.gameObject.GetComponent<PlayerScript> ().Stun (0.5F);
+				}
 			}
 		}
 	}	
