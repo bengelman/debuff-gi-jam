@@ -9,13 +9,13 @@ public class canvas_script : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		delay = 100;
-		Instantiate(lizard, new Vector3(0,0,0), new Quaternion(0,0,0,0));
+		//Instantiate(lizard, new Vector3(0,0,0), new Quaternion(0,0,0,0));
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(delay <= 0){
-			Instantiate(jellyfish,new Vector3(0, 0, 0),new Quaternion(0,0,0,0));
+			//Instantiate(jellyfish,new Vector3(0, 0, 0),new Quaternion(0,0,0,0));
 			delay = 100;
 		} else{
 			delay-=1;
