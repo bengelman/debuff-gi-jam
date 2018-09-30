@@ -115,6 +115,19 @@ MonoBehaviour:
     - {fileID: 21300004, guid: bbdb333c6e58df54eb978e00ac0704f2, type: 3}
     - {fileID: 21300006, guid: bbdb333c6e58df54eb978e00ac0704f2, type: 3}
     speed: 0.2
+  - AnimationName: Death
+    Anim_Sprites:
+    - {fileID: 21300000, guid: 888ae2a1b025e6f4387d4149cc7d888e, type: 3}
+    - {fileID: 21300002, guid: 888ae2a1b025e6f4387d4149cc7d888e, type: 3}
+    - {fileID: 21300004, guid: 888ae2a1b025e6f4387d4149cc7d888e, type: 3}
+    - {fileID: 21300006, guid: 888ae2a1b025e6f4387d4149cc7d888e, type: 3}
+    - {fileID: 21300008, guid: 888ae2a1b025e6f4387d4149cc7d888e, type: 3}
+    - {fileID: 21300010, guid: 888ae2a1b025e6f4387d4149cc7d888e, type: 3}
+    - {fileID: 21300012, guid: 888ae2a1b025e6f4387d4149cc7d888e, type: 3}
+    - {fileID: 21300014, guid: 888ae2a1b025e6f4387d4149cc7d888e, type: 3}
+    - {fileID: 21300016, guid: 888ae2a1b025e6f4387d4149cc7d888e, type: 3}
+    - {fileID: 21300018, guid: 888ae2a1b025e6f4387d4149cc7d888e, type: 3}
+    speed: 0.2
   loops: 0
   prevID: 0
 --- !u!114 &114870309157557040

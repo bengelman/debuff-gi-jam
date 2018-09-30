@@ -32,7 +32,7 @@ public class PlayerScript : MonoBehaviour {
 
 
 
-		new Level("Oasis", new Vector2(0,0), new string[]{"Prefabs/laser"}, new Vector2[]{new Vector2(0f, 0f), new Vector2(0f, 0f)}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
+		//new Level("Oasis", new Vector2(0,0), new string[]{"Prefabs/laser"}, new Vector2[]{new Vector2(0f, 0f), new Vector2(0f, 0f)}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
 
 		
 		new Level("Oasis", new Vector2(-4, 1),
