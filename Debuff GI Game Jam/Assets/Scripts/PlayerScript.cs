@@ -285,7 +285,7 @@ public class PlayerScript : MonoBehaviour {
 		public Vector3 pos;
 		public bool flip;
 
-	}
+	} 
 	public void Hurt(){ 
 		if (stunned || attacking || invulnerability >= 0)
 			Debug.Log("inv");
