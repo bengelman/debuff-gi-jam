@@ -65,12 +65,17 @@ public class SpriteAnim : MonoBehaviour
 				if (loops > 0) {
 					loops--;
 					if (loops == 0) {
+						if (ID == 1 && gameObject.tag.Equals ("Player")) {
+							
+						}
 						ID = prevID;
 						if (gameObject.tag.Equals ("Shadow")) {
 							GameObject.Find ("Character").GetComponent<SpriteRenderer> ().enabled = true;
 							GameObject.Find ("Character").GetComponent<PlayerScript> ().lockOnShadow = false;
+							GameObject.Find ("Character").GetComponent<PlayerScript> ().noTrail = true;
 							ID = 0;
 						}
+
 						if (gameObject.tag.Equals ("Waypoint")) {
 							gameObject.SetActive (false);
 						}

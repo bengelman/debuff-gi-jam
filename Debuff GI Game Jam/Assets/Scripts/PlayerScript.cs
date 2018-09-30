@@ -17,9 +17,11 @@ public class PlayerScript : MonoBehaviour {
 	bool rewinding = false;
 	public bool lockOnShadow = false;
 	public Sprite fullHeart, halfHeart, noHeart;
+	public bool noTrail = false;
 	protected Level[] levels = new Level[]{
-		new Level("Desert", new Vector2(-4, 2), new string[]{"Prefabs/jellyfish_prefab"}, new Vector2[]{new Vector2(14, 21)}),
-		new Level("Oasis", new Vector2(-4, 2), new string[]{"Prefabs/gem_prefab 1"}, new Vector2[]{new Vector2(10, 10)})
+		new Level("Oasis", new Vector2(-4, 1), new string[]{"Prefabs/gem_prefab 1", "Prefabs/jellyfish_prefab"}, new Vector2[]{new Vector2(-1.4F, 4.3F), new Vector2(8.5F, 0.37F)}),
+		new Level("Desert", new Vector2(-4, 2), new string[]{"Prefabs/jellyfish_prefab"}, new Vector2[]{new Vector2(14, 21)})
+
 	};
 	public int level = 0;
 	// Use this for initialization
@@ -179,7 +181,7 @@ public class PlayerScript : MonoBehaviour {
 			GetComponent<SpriteAnim> ().PlayTemp (1, 1);
 			BasicAttack ();
 		}
-		if (Input.GetMouseButtonDown (1)) {
+		if (Input.GetMouseButtonDown (1) && trail.Count > 290) {
 			ShadowAttack ();
 		}
 		int i = trail.Count;
@@ -194,7 +196,7 @@ public class PlayerScript : MonoBehaviour {
 			}
 		}
 	}
-	bool noTrail = false;
+
 	void FixedUpdate () {
 		
 		if (rewinding)
@@ -248,6 +250,7 @@ public class PlayerScript : MonoBehaviour {
 		}
 	}
 	void ShadowAttack(){
+		
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 
 		foreach (GameObject enemy in enemies){
@@ -269,9 +272,15 @@ public class PlayerScript : MonoBehaviour {
 	// the left click attack of player
 	// hurts enemies within a certain distance of player
 	void BasicAttack() {
+		StartCoroutine (attackAfterDelay(0.35F));
+
+		//See SpriteAnim for replacement, which attacks enemies at the end of the animation instead of the start
+	}
+	IEnumerator attackAfterDelay(float delay){
+		yield return new WaitForSeconds (delay);
 		float range = 3.0f;
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
-		
+
 		foreach (GameObject enemy in enemies) {
 			float distance = Vector3.Distance(gameObject.transform.position, enemy.transform.position);
 			if (distance <= range) {
