@@ -15,6 +15,7 @@ public class BossMineScript : MonoBehaviour {
 	public float maxY = 5.0F;
 	
 	public GameObject minePrefab;
+	public bool isActive = false;
 	
 	// the time in seconds before boss spawns mines again 
 	public float mineSpawnDelay = 6.0F;
@@ -28,6 +29,7 @@ public class BossMineScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (isActive) return;
 		
 		// check if it's time to spawn mines
 		if (mineDelay <= 0) {
