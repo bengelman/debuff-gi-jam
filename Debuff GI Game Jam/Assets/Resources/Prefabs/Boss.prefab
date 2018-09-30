@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114135077627229882}
   - component: {fileID: 114869811526489722}
   - component: {fileID: 60451120247606896}
+  - component: {fileID: 114425676354269942}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -92,6 +93,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   currentHealth: 10
+--- !u!114 &114425676354269942
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1376816586225754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c02e24b5ca67a834b9842e0ef4022680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numMines: 5
+  explosionDelay: 5
+  explosionDuration: 1
+  minX: -25
+  maxX: 20
+  minY: 5
+  maxY: 20
+  minePrefab: {fileID: 1995581689762866, guid: 145d4b92b37ae2d48822b1f9e41b2efb, type: 2}
+  isActive: 0
+  mineSpawnDelay: 6
 --- !u!114 &114727335877055840
 MonoBehaviour:
   m_ObjectHideFlags: 1

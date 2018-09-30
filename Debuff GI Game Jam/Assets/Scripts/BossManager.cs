@@ -22,7 +22,7 @@ public class BossManager : MonoBehaviour {
 			System.Random rnd = new System.Random(GetInstanceID()  +(int)System.DateTime.Now.TimeOfDay.TotalMilliseconds);
 			stageTime = 0;
 			stage++;
-			stage = stage % 3;
+			stage = stage % 2;
 			left_offset = (float)rnd.NextDouble()*6-3;
 			right_offset = (float)rnd.NextDouble()*6-3;
 		}
@@ -30,10 +30,13 @@ public class BossManager : MonoBehaviour {
 		switch (stage){
 		case 0:
 			ChasePlayer ();
+			GetComponent<BossMineScript> ().enabled = false;
 			break;
 		case 1:
+			GetComponent<BossMineScript> ().enabled = true;
 			break;
 		case 2:
+			GetComponent<BossMineScript> ().enabled = false;
 			break;
 		default:
 			break;
