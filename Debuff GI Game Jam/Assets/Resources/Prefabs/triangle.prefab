@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114902165247677270}
   - component: {fileID: 114912131873664634}
   - component: {fileID: 114104207833183680}
+  - component: {fileID: 114331602661434846}
   m_Layer: 0
   m_Name: triangle
   m_TagString: Enemy
@@ -63,9 +64,26 @@ MonoBehaviour:
     - {fileID: 21300004, guid: 641b4353c3ae3224ca3b2798e7276ee1, type: 3}
     - {fileID: 21300006, guid: 641b4353c3ae3224ca3b2798e7276ee1, type: 3}
     - {fileID: 21300008, guid: 641b4353c3ae3224ca3b2798e7276ee1, type: 3}
-    speed: 0
+    speed: 0.1
   loops: 0
   prevID: 0
+--- !u!114 &114331602661434846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1041717633002734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fcaa7324853bed4dad49ab954dcbf57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 50190744643232308, guid: 1aff54dd21bcc764e9243e34bdec90b8,
+    type: 2}
+  projectileSpeed: 100
+  bulletLifespan: 1
+  aggroDistance: 5
+  shootDelay: 3
 --- !u!114 &114902165247677270
 MonoBehaviour:
   m_ObjectHideFlags: 1

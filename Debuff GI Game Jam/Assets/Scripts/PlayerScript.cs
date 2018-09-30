@@ -30,7 +30,7 @@ public class PlayerScript : MonoBehaviour {
 	 * */
 	protected Level[] levels = new Level[]{
 
-		new Level("Oasis", new Vector2(0,0), new string[]{"triangle pair"}, new Vector2[]{}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
+		//new Level("Oasis", new Vector2(0,0), new string[]{"triangle pair"}, new Vector2[]{}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
 		
 		new Level("Oasis", new Vector2(-4, 1),
 		new string[]{"Prefabs/gem_prefab 1", "Prefabs/jellyfish_prefab"}, // "Prefabs/wurm_prefab"},
