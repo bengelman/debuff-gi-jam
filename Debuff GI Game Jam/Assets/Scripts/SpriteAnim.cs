@@ -50,6 +50,8 @@ public class SpriteAnim : MonoBehaviour
 
 	IEnumerator AnimateSprite (int ID)
 	{
+		//if (!gameObject.activeSelf)
+			//yield break;
 		switch (ID) {
 		default:
 			yield return new WaitForSeconds (SecsPerFrame);
@@ -63,6 +65,11 @@ public class SpriteAnim : MonoBehaviour
 						ID = prevID;
 						if (gameObject.tag.Equals ("Shadow")) {
 							GameObject.Find ("Character").GetComponent<SpriteRenderer> ().enabled = true;
+							GameObject.Find ("Character").GetComponent<PlayerScript> ().lockOnShadow = false;
+							ID = 0;
+						}
+						if (gameObject.tag.Equals ("Waypoint")) {
+							gameObject.SetActive (false);
 						}
 					}
 				}

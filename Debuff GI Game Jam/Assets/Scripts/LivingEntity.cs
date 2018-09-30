@@ -17,7 +17,8 @@ public class LivingEntity : MonoBehaviour {
 		}
 	}
 	void Death(){
-		gameObject.SetActive (false);
+		if (!GetComponent<PlayerScript>())
+			gameObject.SetActive (false);
 	}
 	public void Hurt(){
 		currentHealth--;

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +9,7 @@ public class EnemyPopup : MonoBehaviour {
 	public float downTime = 3.0f; // time spent down
 	public Sprite downSprite;
 	
-	private bool isUp = false;
+	private bool isUp = true;
 	private float upTimeDelay;
 	private float downTimeDelay;
 
@@ -27,6 +27,9 @@ public class EnemyPopup : MonoBehaviour {
 				downTimeDelay = downTime;
 				isUp = true;
 				
+				//enable collider
+				gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+				
 				// change sprite
 				gameObject.GetComponent<SpriteRenderer>().sprite = upSprite;
 			} else {
@@ -37,6 +40,9 @@ public class EnemyPopup : MonoBehaviour {
 				// change to inactive
 				upTimeDelay = upTime;
 				isUp = false;
+				
+				// disable collider
+				gameObject.GetComponent<PolygonCollider2D>().enabled = false;
 				
 				// change sprite
 				gameObject.GetComponent<SpriteRenderer>().sprite = downSprite;
