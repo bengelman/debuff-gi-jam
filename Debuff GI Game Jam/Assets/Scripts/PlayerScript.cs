@@ -10,7 +10,7 @@ public class PlayerScript : MonoBehaviour {
 	public GameObject[] shadows;
 	public Camera mainCamera;
 	public float baseSpeed = 0.5F;
-	float speedMod = 1.0F;
+	float speedMod = 0.75F;
 	int numShadows = 30;
 	public Image[] hearts; 
 	ArrayList trail = new ArrayList();
@@ -65,7 +65,7 @@ public class PlayerScript : MonoBehaviour {
 	void levelUpdate(){
 		bool portal = true;
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
-		if (GetComponent<SpriteAnim> ().loops > 0 || lockOnShadow || (noTrail && trail.Count > 0))
+		if (GetComponent<SpriteAnim> ().loops > 0 || lockOnShadow || (noTrail))
 			portal = false;
 		foreach (GameObject enemy in enemies){
 			if (enemy.activeSelf) {
@@ -81,19 +81,19 @@ public class PlayerScript : MonoBehaviour {
 			}
 		}
 		if (portal) {
-			if (!noTrail) {
+			if (!firstFlag) {
 				
-
+				firstFlag = true;
 				noTrail = true;
 				return;
 			}
-			if (noTrail && !prePortalAnim) {
+			if (firstFlag && !prePortalAnim) {
 				GetComponent<SpriteAnim> ().PlayTemp (4, 1);
 				prePortalAnim = true;
 				return;
 			}
 			prePortalAnim = false;
-			noTrail = false;
+			firstFlag = false;
 			++level;
 			if (level >= levels.Length) {
 				SceneManager.LoadScene ("MainMenu");
@@ -103,6 +103,7 @@ public class PlayerScript : MonoBehaviour {
 			GetComponent<SpriteAnim> ().PlayTemp (2, 4);
 		}
 	}
+	public bool firstFlag = false;
 	void Update () {
 		levelUpdate ();
 		if (rewinding) {
@@ -131,8 +132,13 @@ public class PlayerScript : MonoBehaviour {
 		}
 		//FixedUpdate ();
 		Vector2 mouse = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position;
-		if (noTrail)
-			mouse = Vector2.zero;
+		if (trail.Count < 1) {
+			noTrail = false;
+		}
+		if (noTrail || firstFlag) {
+			mouse.Normalize();
+			mouse *= 0.7F;
+		}
 		GetComponent<SpriteRenderer> ().flipX = mouse.x > 0;
 		float mag = mouse.magnitude;
 		if (mouse.magnitude > 1.0f) {
@@ -193,7 +199,7 @@ public class PlayerScript : MonoBehaviour {
 		
 		if (rewinding)
 			return;
-		if (GetComponent<Rigidbody2D> ().velocity.magnitude < 0.5 || noTrail) {
+		if (GetComponent<Rigidbody2D> ().velocity.magnitude < 0.5 || noTrail || firstFlag) {
 			if (trail.Count > 0) {
 				trail.RemoveRange (trail.Count - Mathf.Min(trail.Count, 7), Mathf.Min(trail.Count, 7));
 			}
