@@ -23,7 +23,7 @@ public class PlayerScript : MonoBehaviour {
 	public bool noTrail = false;
 	protected Level[] levels = new Level[]{
 		new Level("Oasis", new Vector2(-4, 1), new string[]{"Prefabs/gem_prefab 1", "Prefabs/jellyfish_prefab"}, new Vector2[]{new Vector2(-1.4F, 4.3F), new Vector2(8.5F, 0.37F)}),
-		new Level("Level2", new Vector2(1.3F, -3.2F), new string[]{"Prefabs/hourglass", "Prefabs/hourglass"}, new Vector2[]{new Vector2(11F, 1F), new Vector2(-8F, 1F)}),
+		new Level("Level2", new Vector2(1.3F, -3.2F), new string[]{"Prefabs/hourglass", "Prefabs/hourglass", "Prefabs/coral", "Prefabs/coral"}, new Vector2[]{new Vector2(11F, 1F), new Vector2(-8F, 1F), new Vector2(4.5F, -3.5F), new Vector2(-2F, -0.5F)}),
 		new Level("Desert", new Vector2(-4, 2), new string[]{"Prefabs/jellyfish_prefab"}, new Vector2[]{new Vector2(14, 21)})
 
 	};

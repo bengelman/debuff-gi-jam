@@ -1,4 +1,4 @@
-﻿﻿using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,7 +31,9 @@ public class EnemyPopup : MonoBehaviour {
 				gameObject.GetComponent<PolygonCollider2D>().enabled = true;
 				
 				// change sprite
-				gameObject.GetComponent<SpriteRenderer>().sprite = upSprite;
+				GetComponent<SpriteAnim>().PlayAnimation(0);
+				GetComponent<SpriteAnim> ().PlayTemp (3, 1);
+				//gameObject.GetComponent<SpriteRenderer>().sprite = upSprite;
 			} else {
 				downTimeDelay = downTimeDelay - Time.deltaTime;
 			}
@@ -45,7 +47,9 @@ public class EnemyPopup : MonoBehaviour {
 				gameObject.GetComponent<PolygonCollider2D>().enabled = false;
 				
 				// change sprite
-				gameObject.GetComponent<SpriteRenderer>().sprite = downSprite;
+				GetComponent<SpriteAnim>().PlayAnimation(2);
+				GetComponent<SpriteAnim> ().PlayTemp (1, 1);
+				//gameObject.GetComponent<SpriteRenderer>().sprite = downSprite;
 			} else {
 				upTimeDelay = upTimeDelay - Time.deltaTime;
 			}
@@ -65,7 +69,11 @@ public class EnemyPopup : MonoBehaviour {
 				//knocks back the target
 				// Debug.Log(col.gameObject.transform.position);
 				// Debug.Log(this.transform.position);
-				col.gameObject.transform.position -= (this.transform.position-col.gameObject.transform.position);
+				Vector2 knockback = -(this.transform.position-col.gameObject.transform.position);
+				knockback.Normalize ();
+				knockback *= 3;
+				col.gameObject.GetComponent<Rigidbody2D>().velocity = (knockback);
+				col.gameObject.GetComponent<PlayerScript> ().Stun (0.5F);
 			}
 		}
 	}	

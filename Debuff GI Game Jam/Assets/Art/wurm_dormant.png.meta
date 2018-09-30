@@ -1,14 +1,13 @@
 fileFormatVersion: 2
-guid: cee3e7c38b588e343b9bcc786e2d9c8c
+guid: 93c36060e1516134f821d5a1cd505be5
 TextureImporter:
   fileIDToRecycleName:
-    21300000: wurm_0
-    21300002: wurm_1
-    21300004: wurm_2
-    21300006: wurm_3
-    21300008: wurm_4
-    21300010: wurm_5
-    21300012: wurm_6
+    21300000: wurm_dormant_0
+    21300002: wurm_dormant_1
+    21300004: wurm_dormant_2
+    21300006: wurm_dormant_3
+    21300008: wurm_dormant_4
+    21300010: wurm_dormant_5
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -102,7 +101,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wurm_0
+      name: wurm_dormant_0
       rect:
         serializedVersion: 2
         x: 0
@@ -116,13 +115,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91c8d56fb3628634b84b1d4b9fb3d0e6
+      spriteID: 70a90eeaec42aee459c9d6c7737a3037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wurm_1
+      name: wurm_dormant_1
       rect:
         serializedVersion: 2
         x: 32
@@ -136,33 +135,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3afe7e3774c1fce44bd1eb14e84a8237
+      spriteID: 3dade1e9b51528943962aeab8b4ab843
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wurm_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 731e923d810a3ff4489ad0920b81ca66
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wurm_3
+      name: wurm_dormant_2
       rect:
         serializedVersion: 2
         x: 0
@@ -176,13 +155,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ea3a2257b5a91149a1a67d4845f527a
+      spriteID: 4e84e525e90eb4145ad3bccd00c06d5a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wurm_4
+      name: wurm_dormant_3
       rect:
         serializedVersion: 2
         x: 32
@@ -196,33 +175,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b6cb3ffce3f1304ebbdd82c9c27bcc4
+      spriteID: 3d4484392f8d1414fa26b99887a247d5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wurm_5
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6eb4da08ef50108468174e2996c1eb54
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wurm_6
+      name: wurm_dormant_4
       rect:
         serializedVersion: 2
         x: 0
@@ -236,7 +195,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f85a1e75bbebd54f83a9a392c6a203d
+      spriteID: 3fd2b1243f743ad47b2bc926f9aece3c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wurm_dormant_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c68fdbbff241bd47a8958dc8d8500dc
       vertices: []
       indices: 
       edges: []
@@ -244,7 +223,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b1b5fa1a908d03b49bcc22be7d8ebf65
+    spriteID: e5724de0a6281514f951e56b776a46d8
     vertices: []
     indices: 
     edges: []
