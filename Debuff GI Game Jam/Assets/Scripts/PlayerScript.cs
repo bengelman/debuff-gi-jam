@@ -29,6 +29,8 @@ public class PlayerScript : MonoBehaviour {
 	 * Vector2[]: positions of prefabs to be loaded
 	 * */
 	protected Level[] levels = new Level[]{
+
+		new Level("Oasis", new Vector2(0,0), new string[]{"triangle pair"}, new Vector2[]{}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
 		
 		new Level("Oasis", new Vector2(-4, 1),
 		new string[]{"Prefabs/gem_prefab 1", "Prefabs/jellyfish_prefab"}, // "Prefabs/wurm_prefab"},
@@ -350,11 +352,13 @@ public class PlayerScript : MonoBehaviour {
 		public string[] objects;
 		public Vector2 start;
 		public Vector2[] locations;
-		public Level(string levelName, Vector2 start, string[] objects, Vector2[] locations){
+		public Vector2[] triangle_locations;
+		public Level(string levelName, Vector2 start, string[] objects, Vector2[] locations, Vector2[] triangle_locations= null ){
 			this.levelName = levelName;
 			this.objects = objects;
 			this.locations = locations;
 			this.start = start;
+			this.triangle_locations = triangle_locations;
 		}
 		public void load(){
 			GameObject[] objects = GameObject.FindObjectsOfType<GameObject> ();
@@ -365,7 +369,7 @@ public class PlayerScript : MonoBehaviour {
 				}
 			}
 			GameObject _prefab = Resources.Load <GameObject> ("Tiles/" + levelName);
-
+			Debug.Log(_prefab);
 			GameObject gridBgPrefab = (GameObject)Instantiate (_prefab, new Vector3(0f,0f,0f), Quaternion.identity);
 			GameObject.Find ("Character").transform.position = start;
 			int index = 0;
@@ -376,10 +380,23 @@ public class PlayerScript : MonoBehaviour {
 
 			}
 			GameObject.Find ("Character").GetComponent<PlayerScript> ().trail.Clear ();
+			int triangle_head = 0;
 			for (int i = 0; i < this.objects.Length; i++){
-				GameObject obj = Resources.Load <GameObject> (this.objects[i]);
-				Instantiate (obj);
-				obj.transform.position = locations[i];
+				if(this.objects[i] == "triangle pair"){
+					//spawn the triangles
+					GameObject obj = Resources.Load<GameObject>("Prefabs/triangle");
+					GameObject obj2 = Resources.Load<GameObject>("Prefabs/triangle2");
+					triangle a_triangle = Instantiate(obj, this.triangle_locations[triangle_head], new Quaternion(0,0,0,0)).gameObject.GetComponent<triangle>();
+					triangle2 a_triangle2 = Instantiate(obj2,this.triangle_locations[triangle_head+1], new Quaternion(0,0,0,0)).gameObject.GetComponent<triangle2>();
+					a_triangle.sibling = a_triangle2;
+					a_triangle2.sibling = a_triangle;
+					triangle_head+=2; // set the triangle head up
+				}
+				else{ // not instantiating a triangle
+					GameObject obj = Resources.Load <GameObject> (this.objects[i]);
+					Instantiate (obj);
+					obj.transform.position = locations[i];
+				}
 			}
 
 		}

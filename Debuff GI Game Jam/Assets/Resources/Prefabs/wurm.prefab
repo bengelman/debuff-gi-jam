@@ -166,7 +166,7 @@ MonoBehaviour:
   projectileSpeed: 100
   bulletLifespan: 3
   aggroDistance: 4
-  shootDelay: 0.2
+  shootDelay: 0.5
 --- !u!212 &212056780398113436
 SpriteRenderer:
   m_ObjectHideFlags: 1

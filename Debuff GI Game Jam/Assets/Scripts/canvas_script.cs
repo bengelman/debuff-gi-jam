@@ -13,13 +13,8 @@ public class canvas_script : MonoBehaviour {
 	void Start () {
 		delay = 100;
 
-		//Instantiate(lizard, new Vector3(0,0,0), new Quaternion(0,0,0,0));
-		triangle a_triangle = Instantiate(triangle, new Vector3(-10,0,0), new Quaternion(0,0,0,0)).gameObject.GetComponent<triangle>();
-		triangle2 a_triangle2 = Instantiate(triangle2, new Vector3(-10,5,0), new Quaternion(0,0,0,0)).gameObject.GetComponent<triangle2>();
-		a_triangle.sibling = a_triangle2;
-		a_triangle2.sibling = a_triangle;
 		
-
+		Debug.Log("A");
 	}
 	
 	// Update is called once per frame
