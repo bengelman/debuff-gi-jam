@@ -390,7 +390,7 @@ public class PlayerScript : MonoBehaviour {
 					triangle2 a_triangle2 = Instantiate(obj2,this.triangle_locations[triangle_head+1], new Quaternion(0,0,0,0)).gameObject.GetComponent<triangle2>();
 					a_triangle.sibling = a_triangle2;
 					a_triangle2.sibling = a_triangle;
-					triangle_head+=2;
+					triangle_head+=2; // set the triangle head up
 				}
 				else{ // not instantiating a triangle
 					GameObject obj = Resources.Load <GameObject> (this.objects[i]);
