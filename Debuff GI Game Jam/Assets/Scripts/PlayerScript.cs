@@ -9,8 +9,8 @@ public class PlayerScript : MonoBehaviour {
 	public GameObject shadow;
 	public GameObject[] shadows;
 	public Camera mainCamera;
-	public float baseSpeed = 1.0F;
-	float speedMod = 0.5F;
+	public float baseSpeed = 0.5F;
+	float speedMod = 1.0F;
 	int numShadows = 30;
 	public Image[] hearts; 
 	ArrayList trail = new ArrayList();
@@ -92,7 +92,8 @@ public class PlayerScript : MonoBehaviour {
 				prePortalAnim = true;
 				return;
 			}
-
+			prePortalAnim = false;
+			noTrail = false;
 			++level;
 			if (level >= levels.Length) {
 				SceneManager.LoadScene ("MainMenu");
@@ -137,7 +138,7 @@ public class PlayerScript : MonoBehaviour {
 		if (mouse.magnitude > 1.0f) {
 			mouse.Normalize (); 
 			mouse /= accelLimit;
-			mouse *= 1 + (mag / 100);
+			//mouse *= 1 + (mag / 100);
 			momentum += Time.deltaTime;
 
 			if (accelLimit > 1) {
@@ -158,7 +159,7 @@ public class PlayerScript : MonoBehaviour {
 			}
 		}
 
-		mouse *= ((baseSpeed) * speedMod) * (1 + Mathf.Sqrt(momentum * 0.1F))*2;
+		mouse *= ((baseSpeed) * speedMod);// * (1 + Mathf.Sqrt(momentum * 0.05F));
 
 		GetComponent<Rigidbody2D> ().velocity = mouse;
 		//transform.position = newVec;
