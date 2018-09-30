@@ -35,9 +35,9 @@ public class PlayerScript : MonoBehaviour {
 
 
 
-		new Level("Oasis", new Vector2(0,0), new string[]{"Prefabs/laser"}, new Vector2[]{new Vector2(0f, 0f), new Vector2(0f, 0f)}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
+		//new Level("Oasis", new Vector2(0,0), new string[]{"Prefabs/laser"}, new Vector2[]{new Vector2(0f, 0f), new Vector2(0f, 0f)}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
 
-		
+		/*
 		new Level("Oasis", new Vector2(-4, 1),
 		new string[]{"Prefabs/gem_prefab 1", "Prefabs/jellyfish_prefab"}, // "Prefabs/wurm_prefab"},
 		new Vector2[]{new Vector2(-1.4F, 4.3F), new Vector2(8.5F, 0.37F)}), // new Vector2(-3.0F, 0.5F)}),
@@ -51,7 +51,7 @@ public class PlayerScript : MonoBehaviour {
 		new Vector2[]{new Vector2(14, 21)}),
 
 		new Level("Oasis", new Vector2(0,-4), new string[]{"triangle pair"}, new Vector2[]{}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
-
+*/
 		new Level("BossFight", new Vector2(-2, -7),
 			new string[]{"Prefabs/jellyfish_prefab"},
 			new Vector2[]{new Vector2(14, 21)})
