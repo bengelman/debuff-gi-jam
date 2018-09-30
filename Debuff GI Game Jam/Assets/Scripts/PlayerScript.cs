@@ -29,23 +29,18 @@ public class PlayerScript : MonoBehaviour {
 	 * Vector2[]: positions of prefabs to be loaded
 	 * */
 	protected Level[] levels = new Level[]{
-<<<<<<< HEAD
-		new Level("Oasis", new Vector2(-4, 1), new string[]{"Prefabs/gem_prefab 1", "Prefabs/jellyfish_prefab"}, new Vector2[]{new Vector2(-1.4F, 4.3F), new Vector2(8.5F, 0.37F)}),
-		new Level("Level2", new Vector2(1.3F, -3.2F), new string[]{"Prefabs/hourglass", "Prefabs/hourglass", "Prefabs/coral", "Prefabs/coral", "Prefabs/wurm"}, new Vector2[]{new Vector2(11F, 1F), new Vector2(-8F, 1F), new Vector2(4.5F, -3.5F), new Vector2(-2F, -0.5F), new Vector2(4F, 0F)}),
-		new Level("Desert", new Vector2(-4, 2), new string[]{"Prefabs/jellyfish_prefab"}, new Vector2[]{new Vector2(14, 21)})
-=======
+		
 		new Level("Oasis", new Vector2(-4, 1),
 		new string[]{"Prefabs/gem_prefab 1", "Prefabs/jellyfish_prefab"}, // "Prefabs/wurm_prefab"},
 		new Vector2[]{new Vector2(-1.4F, 4.3F), new Vector2(8.5F, 0.37F)}), // new Vector2(-3.0F, 0.5F)}),
 			
 		new Level("Level2", new Vector2(1.3F, -3.2F),
-		new string[]{"Prefabs/hourglass", "Prefabs/hourglass"},
-		new Vector2[]{new Vector2(11F, 1F), new Vector2(-8F, 1F)}),
+		new string[]{"Prefabs/hourglass", "Prefabs/hourglass", "Prefabs/wurm"},
+			new Vector2[]{new Vector2(11F, 1F), new Vector2(-8F, 1F), new Vector2(0, 0)}),
 			
 		new Level("Desert", new Vector2(-4, 2),
 		new string[]{"Prefabs/jellyfish_prefab"},
 		new Vector2[]{new Vector2(14, 21)})
->>>>>>> 19fb459ed36d93c7b80c97124ac3bcc3048aaace
 
 	};
 	public int level = 0;
@@ -335,7 +330,6 @@ public class PlayerScript : MonoBehaviour {
 	void BasicAttack() {
 		StartCoroutine (attackAfterDelay(0.35F));
 		attacking = true;
-		//See SpriteAnim for replacement, which attacks enemies at the end of the animation instead of the start
 	}
 	IEnumerator attackAfterDelay(float delay){
 		yield return new WaitForSeconds (delay);

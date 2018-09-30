@@ -21,8 +21,12 @@ public class LivingEntity : MonoBehaviour {
 			gameObject.SetActive (false);
 	}
 	public void Hurt(){
-		
-		if (GetComponent<PlayerScript> ()) {
+		if (GetComponent<EnemyPopup> ()) {
+			if (GetComponent<EnemyPopup> ().isUp) {
+				currentHealth--;
+			}
+		}
+		else if (GetComponent<PlayerScript> ()) {
 			GetComponent<PlayerScript> ().Hurt ();
 		} else {
 			currentHealth--;
