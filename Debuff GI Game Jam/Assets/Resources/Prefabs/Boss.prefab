@@ -175,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stage: 0
   stageTime: 0
-  speed: 1
+  speed: 2
 --- !u!212 &212112496684113584
 SpriteRenderer:
   m_ObjectHideFlags: 1
