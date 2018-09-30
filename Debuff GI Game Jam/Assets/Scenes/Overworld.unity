@@ -951,6 +951,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bff7b35d3a39d84d94f23bb9faa5762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
+  alterante_sprite: {fileID: 0}
 --- !u!61 &1185719220
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1393,7 +1395,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2082,6 +2084,86 @@ Prefab:
     - target: {fileID: 4488815070994246, guid: 9d81b09213f797743a5f7dc60a98eb37, type: 2}
       propertyPath: m_RootOrder
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094281540833882, guid: 9d81b09213f797743a5f7dc60a98eb37,
+        type: 2}
+      propertyPath: m_Tiles.Array.data[536].second.m_ColliderType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094281540833882, guid: 9d81b09213f797743a5f7dc60a98eb37,
+        type: 2}
+      propertyPath: m_Tiles.Array.data[537].second.m_ColliderType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094281540833882, guid: 9d81b09213f797743a5f7dc60a98eb37,
+        type: 2}
+      propertyPath: m_Tiles.Array.data[538].second.m_ColliderType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094281540833882, guid: 9d81b09213f797743a5f7dc60a98eb37,
+        type: 2}
+      propertyPath: m_Tiles.Array.data[539].second.m_ColliderType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094281540833882, guid: 9d81b09213f797743a5f7dc60a98eb37,
+        type: 2}
+      propertyPath: m_Tiles.Array.data[540].second.m_ColliderType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094281540833882, guid: 9d81b09213f797743a5f7dc60a98eb37,
+        type: 2}
+      propertyPath: m_Tiles.Array.data[541].second.m_ColliderType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094281540833882, guid: 9d81b09213f797743a5f7dc60a98eb37,
+        type: 2}
+      propertyPath: m_Tiles.Array.data[542].second.m_ColliderType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094281540833882, guid: 9d81b09213f797743a5f7dc60a98eb37,
+        type: 2}
+      propertyPath: m_Tiles.Array.data[543].second.m_ColliderType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094281540833882, guid: 9d81b09213f797743a5f7dc60a98eb37,
+        type: 2}
+      propertyPath: m_Tiles.Array.data[560].second.m_ColliderType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094281540833882, guid: 9d81b09213f797743a5f7dc60a98eb37,
+        type: 2}
+      propertyPath: m_Tiles.Array.data[561].second.m_ColliderType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094281540833882, guid: 9d81b09213f797743a5f7dc60a98eb37,
+        type: 2}
+      propertyPath: m_Tiles.Array.data[562].second.m_ColliderType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094281540833882, guid: 9d81b09213f797743a5f7dc60a98eb37,
+        type: 2}
+      propertyPath: m_Tiles.Array.data[563].second.m_ColliderType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094281540833882, guid: 9d81b09213f797743a5f7dc60a98eb37,
+        type: 2}
+      propertyPath: m_Tiles.Array.data[564].second.m_ColliderType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094281540833882, guid: 9d81b09213f797743a5f7dc60a98eb37,
+        type: 2}
+      propertyPath: m_Tiles.Array.data[565].second.m_ColliderType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094281540833882, guid: 9d81b09213f797743a5f7dc60a98eb37,
+        type: 2}
+      propertyPath: m_Tiles.Array.data[566].second.m_ColliderType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094281540833882, guid: 9d81b09213f797743a5f7dc60a98eb37,
+        type: 2}
+      propertyPath: m_Tiles.Array.data[567].second.m_ColliderType
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d81b09213f797743a5f7dc60a98eb37, type: 2}
