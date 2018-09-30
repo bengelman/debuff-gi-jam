@@ -15,6 +15,10 @@ public class GemScript : MonoBehaviour {
 	}
 	void OnCollisionStay2D(Collision2D col){
 		if (col.gameObject.tag.Equals ("Player")) {
+
+			col.gameObject.gameObject.GetComponent<SpriteAnim> ().PlayTemp (3, 1);
+			Destroy(gameObject);
+
 			if (Input.GetButton("Interact")) {
 				col.gameObject.GetComponent<SpriteAnim> ().PlayTemp (3, 1);
 				GetComponent<SpriteAnim> ().PlayTemp (1, 1);
