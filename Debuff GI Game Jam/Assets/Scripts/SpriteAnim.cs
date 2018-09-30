@@ -69,6 +69,12 @@ public class SpriteAnim : MonoBehaviour
 							
 						}
 						ID = prevID;
+						/*
+						if (gameObject.tag.Equals ("Hourglass")) {
+							if (GameObject.Find ("Character").GetComponent<PlayerScript> ().breakHourglass) {
+								gameObject.SetActive (false);
+							}
+						}*/
 						if (gameObject.tag.Equals ("Shadow")) {
 							GameObject.Find ("Character").GetComponent<SpriteRenderer> ().enabled = true;
 							GameObject.Find ("Character").GetComponent<PlayerScript> ().lockOnShadow = false;

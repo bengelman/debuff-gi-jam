@@ -10,16 +10,20 @@ public class PlayerScript : MonoBehaviour {
 	public GameObject[] shadows;
 	public Camera mainCamera;
 	public float baseSpeed = 0.5F;
+	private bool stunned = false;
 	float speedMod = 0.75F;
 	int numShadows = 30;
 	public Image[] hearts; 
 	ArrayList trail = new ArrayList();
+	public bool breakHourglass = false;
+	public bool attacking = false;
 	bool rewinding = false;
 	public bool lockOnShadow = false;
 	public Sprite fullHeart, halfHeart, noHeart;
 	public bool noTrail = false;
 	protected Level[] levels = new Level[]{
 		new Level("Oasis", new Vector2(-4, 1), new string[]{"Prefabs/gem_prefab 1", "Prefabs/jellyfish_prefab"}, new Vector2[]{new Vector2(-1.4F, 4.3F), new Vector2(8.5F, 0.37F)}),
+		new Level("Level2", new Vector2(1.3F, -3.2F), new string[]{"Prefabs/hourglass", "Prefabs/hourglass"}, new Vector2[]{new Vector2(11F, 1F), new Vector2(-8F, 1F)}),
 		new Level("Desert", new Vector2(-4, 2), new string[]{"Prefabs/jellyfish_prefab"}, new Vector2[]{new Vector2(14, 21)})
 
 	};
@@ -64,6 +68,15 @@ public class PlayerScript : MonoBehaviour {
 		}
 	}
 	bool prePortalAnim = false;
+	public void Stun(float time){
+		stunned = true;
+		StartCoroutine ("endStun", time);
+	}
+	IEnumerator endStun(float time){
+		yield return new WaitForSeconds (time);
+		stunned = false;
+		yield break;
+	}
 	void levelUpdate(){
 		bool portal = true;
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
@@ -78,6 +91,13 @@ public class PlayerScript : MonoBehaviour {
 		GameObject[] waypoints = GameObject.FindGameObjectsWithTag ("Waypoint");
 		foreach (GameObject enemy in waypoints){
 			if (enemy.activeSelf) {
+				portal = false;
+				break;
+			}
+		}
+		GameObject[] hourglasses = GameObject.FindGameObjectsWithTag ("Hourglass");
+		foreach (GameObject enemy in hourglasses){
+			if (enemy.GetComponent<SpriteAnim>().loops == 0 && !breakHourglass) {
 				portal = false;
 				break;
 			}
@@ -102,12 +122,14 @@ public class PlayerScript : MonoBehaviour {
 				return;
 			}
 			levels [level].load ();
+			breakHourglass = false;
 			GetComponent<SpriteAnim> ().PlayTemp (2, 4);
 		}
 	}
 	public bool firstFlag = false;
 	void Update () {
 		levelUpdate ();
+
 		if (rewinding) {
 			if (trail.Count < 1) {
 				rewinding = false;
@@ -123,6 +145,8 @@ public class PlayerScript : MonoBehaviour {
 			return;
 		}
 		UpdateHealthBar ();
+		if (stunned)
+			return;
 		if (lockOnShadow) {
 			foreach (GameObject obj in shadows) {
 				if (obj.GetComponent<SpriteAnim> ().loops > 0) {
@@ -244,6 +268,9 @@ public class PlayerScript : MonoBehaviour {
 
 	}
 	public void Hurt(){
+		if (stunned || attacking)
+			return;
+		GetComponent<LivingEntity> ().currentHealth--;
 		GetComponent<SpriteAnim> ().PlayTemp (2, 1);
 		if (GetComponent<LivingEntity> ().currentHealth <= 0) {
 			GetComponent<SpriteAnim> ().PlayAnimation (2);
@@ -251,7 +278,11 @@ public class PlayerScript : MonoBehaviour {
 	}
 	void ShadowAttack(){
 		
-		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+		GameObject[] basicEnemies = GameObject.FindGameObjectsWithTag ("Enemy");
+
+		List<GameObject> enemies = new List<GameObject> (GameObject.FindGameObjectsWithTag("Hourglass"));
+		enemies.AddRange (basicEnemies);
+		List<GameObject> hourglasses = new List<GameObject> ();
 
 		foreach (GameObject enemy in enemies){
 			for(int i = shadows.Length - 1; i >= 0; i--) {
@@ -259,21 +290,30 @@ public class PlayerScript : MonoBehaviour {
 				if (Mathf.Abs ((enemy.transform.position - shadow.transform.position).magnitude) < 1) {
 					momentum = 0;
 					shadow.GetComponent<SpriteAnim> ().PlayTemp (1, 1);
-					enemy.GetComponent<LivingEntity> ().Hurt();
+					if (enemy.tag.Equals ("Hourglass")) {
+						enemy.GetComponent<SpriteAnim> ().PlayTemp (1, 1);
+						hourglasses.Add (enemy);
+					}
+					else
+						enemy.GetComponent<LivingEntity> ().Hurt();
 					lockOnShadow = true;
 					break;
 				}
 			}
 		}
 
+		if (hourglasses.Count >= GameObject.FindGameObjectsWithTag ("Hourglass").Length) {
+			breakHourglass = true;
+		}
+
+
 	}
 
-	
 	// the left click attack of player
 	// hurts enemies within a certain distance of player
 	void BasicAttack() {
 		StartCoroutine (attackAfterDelay(0.35F));
-
+		attacking = true;
 		//See SpriteAnim for replacement, which attacks enemies at the end of the animation instead of the start
 	}
 	IEnumerator attackAfterDelay(float delay){
@@ -287,6 +327,7 @@ public class PlayerScript : MonoBehaviour {
 				enemy.GetComponent<LivingEntity>().Hurt();
 			}
 		}
+		attacking = false;
 	}
 	public class Level{
 		public string levelName;

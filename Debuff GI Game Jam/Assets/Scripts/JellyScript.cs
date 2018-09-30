@@ -54,7 +54,12 @@ public class JellyScript : MonoBehaviour {
 				//knocks back the target
 				// Debug.Log(col.gameObject.transform.position);
 				// Debug.Log(this.transform.position);
-				col.gameObject.transform.position -= (this.transform.position-col.gameObject.transform.position);
+				Vector2 knockback = -(this.transform.position-col.gameObject.transform.position);
+				knockback.Normalize ();
+				knockback *= 3;
+				col.gameObject.GetComponent<Rigidbody2D>().velocity = (knockback);
+				col.gameObject.GetComponent<PlayerScript> ().Stun (0.5F);
+				//col.gameObject.transform.position -= (this.transform.position-col.gameObject.transform.position);
 				
 			}
 		}
