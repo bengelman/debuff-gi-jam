@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour {
 	public PolygonCollider2D collisionDetection;
@@ -16,6 +17,11 @@ public class PlayerScript : MonoBehaviour {
 	bool rewinding = false;
 	public bool lockOnShadow = false;
 	public Sprite fullHeart, halfHeart, noHeart;
+	protected Level[] levels = new Level[]{
+		new Level("Desert", new Vector2(-4, 2), new string[]{"Prefabs/jellyfish_prefab"}, new Vector2[]{new Vector2(14, 21)}),
+		new Level("Oasis", new Vector2(-4, 2), new string[]{"Prefabs/gem_prefab 1"}, new Vector2[]{new Vector2(10, 10)})
+	};
+	public int level = 0;
 	// Use this for initialization
 	void Start () {
 		shadows = new GameObject[numShadows];
@@ -23,7 +29,7 @@ public class PlayerScript : MonoBehaviour {
 		for (int i = 1; i < numShadows; i++) {
 			shadows [i] = Instantiate (shadow);
 		}
-
+		levels [level].load ();
 	}
 	float accelLimit = 1;
 
@@ -55,7 +61,36 @@ public class PlayerScript : MonoBehaviour {
 			hearts [2].sprite = noHeart;
 		}
 	}
+	void levelUpdate(){
+		bool portal = true;
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+		if (GetComponent<SpriteAnim> ().loops > 0 || lockOnShadow)
+			portal = false;
+		foreach (GameObject enemy in enemies){
+			if (enemy.activeSelf) {
+				portal = false;
+				break;
+			}
+		}
+		GameObject[] waypoints = GameObject.FindGameObjectsWithTag ("Waypoint");
+		foreach (GameObject enemy in waypoints){
+			if (enemy.activeSelf) {
+				portal = false;
+				break;
+			}
+		}
+		if (portal) {
+			++level;
+			if (level >= levels.Length) {
+				SceneManager.LoadScene ("MainMenu");
+				return;
+			}
+			levels [level].load ();
+			GetComponent<SpriteAnim> ().PlayTemp (2, 4);
+		}
+	}
 	void Update () {
+		levelUpdate ();
 		if (rewinding) {
 			if (trail.Count < 1) {
 				rewinding = false;
@@ -73,7 +108,9 @@ public class PlayerScript : MonoBehaviour {
 		UpdateHealthBar ();
 		if (lockOnShadow) {
 			foreach (GameObject obj in shadows) {
-				
+				if (obj.GetComponent<SpriteAnim> ().loops > 0) {
+					mainCamera.transform.localPosition = new Vector3 (obj.transform.position.x - transform.position.x, obj.transform.position.y - transform.position.y, mainCamera.transform.localPosition.z);
+				}
 			}
 		} else {
 			mainCamera.transform.localPosition = new Vector3 (0, 0, mainCamera.transform.localPosition.z);
@@ -107,7 +144,7 @@ public class PlayerScript : MonoBehaviour {
 			}
 		}
 
-		mouse *= ((baseSpeed) * speedMod) * (1 + Mathf.Sqrt(momentum * 0.1F));
+		mouse *= ((baseSpeed) * speedMod) * (1 + Mathf.Sqrt(momentum * 0.1F))*2;
 
 		GetComponent<Rigidbody2D> ().velocity = mouse;
 		//transform.position = newVec;
@@ -183,6 +220,9 @@ public class PlayerScript : MonoBehaviour {
 	}
 	public void Hurt(){
 		GetComponent<SpriteAnim> ().PlayTemp (2, 1);
+		if (GetComponent<LivingEntity> ().currentHealth <= 0) {
+			GetComponent<SpriteAnim> ().PlayAnimation (2);
+		}
 	}
 	void ShadowAttack(){
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
@@ -194,6 +234,7 @@ public class PlayerScript : MonoBehaviour {
 					momentum = 0;
 					shadow.GetComponent<SpriteAnim> ().PlayTemp (1, 1);
 					enemy.GetComponent<LivingEntity> ().Hurt();
+					lockOnShadow = true;
 					break;
 				}
 			}
@@ -213,6 +254,42 @@ public class PlayerScript : MonoBehaviour {
 			if (distance <= range) {
 				enemy.GetComponent<LivingEntity>().Hurt();
 			}
+		}
+	}
+	public class Level{
+		public string levelName;
+		public int year;
+		public string[] objects;
+		public Vector2 start;
+		public Vector2[] locations;
+		public Level(string levelName, Vector2 start, string[] objects, Vector2[] locations){
+			this.levelName = levelName;
+			this.objects = objects;
+			this.locations = locations;
+			this.start = start;
+		}
+		public void load(){
+			GameObject[] objects = GameObject.FindObjectsOfType<GameObject> ();
+			foreach (GameObject o in objects) {
+				if (!o.tag.Equals ("MainCamera") && !o.tag.Equals ("Player") && !o.tag.Equals("Shadow") && o.layer != 5) {
+					Destroy (o);
+				}
+			}
+			GameObject _prefab = Resources.Load <GameObject> ("Tiles/" + levelName);
+			if (_prefab == null) {
+				Debug.Log ("IS NULL");
+			} else {
+				Debug.Log ("INSTANTIATE");
+			}
+			GameObject gridBgPrefab = (GameObject)Instantiate (_prefab, new Vector3(0f,0f,0f), Quaternion.identity);
+			GameObject.Find ("Character").transform.position = start;
+			GameObject.Find ("Character").GetComponent<PlayerScript> ().trail.Clear ();
+			for (int i = 0; i < this.objects.Length; i++){
+				GameObject obj = Resources.Load <GameObject> (this.objects[i]);
+				Instantiate (obj);
+				obj.transform.position = locations[i];
+			}
+
 		}
 	}
 }

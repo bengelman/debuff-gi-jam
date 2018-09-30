@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Shadow
   - Enemy
+  - Waypoint
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Background
   - 
   - 
   - 
@@ -40,6 +41,13 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+<<<<<<< HEAD
+    uniqueID: 1329590821
+=======
+    uniqueID: 820496549
+>>>>>>> dc0d24681a6fbf0d8e88386dba2fb4d0de81278a
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
