@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//this class is terrible software engineering. It is called "playerscript" but for some reason handles levels as well. This might need to be fixed, just saying.
+
+
 public class PlayerScript : MonoBehaviour {
 	public PolygonCollider2D collisionDetection;
 	public GameObject shadow;
