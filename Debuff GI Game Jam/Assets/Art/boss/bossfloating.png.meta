@@ -1,12 +1,17 @@
 fileFormatVersion: 2
-guid: 40ab623b17c90ed40922c5e8188ad208
+guid: 76086ac65f376e745b0cfa7335723cc6
 TextureImporter:
   fileIDToRecycleName:
-    21300000: bossidle_0
-    21300002: bossidle_1
-    21300004: bossidle_2
-    21300006: bossidle_3
-    21300008: bossidle_4
+    21300000: bossfloating_0
+    21300002: bossfloating_1
+    21300004: bossfloating_2
+    21300006: bossfloating_3
+    21300008: bossfloating_4
+    21300010: bossfloating_5
+    21300012: bossfloating_6
+    21300014: bossfloating_7
+    21300016: bossfloating_8
+    21300018: bossfloating_9
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -100,7 +105,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bossidle_0
+      name: bossfloating_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 292816eddcf0b654f8ca4709bca1f5dd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossfloating_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6c25911cb733ba47983c52c212f2787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossfloating_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32dbfdb3a2e4ab4488c10b8f32cc430e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossfloating_3
       rect:
         serializedVersion: 2
         x: 0
@@ -114,13 +179,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b373018a771ad0147bb4709002c0811f
+      spriteID: 8e2df3f16f1455043830e424eb39dc02
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bossidle_1
+      name: bossfloating_4
       rect:
         serializedVersion: 2
         x: 64
@@ -134,13 +199,33 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bdae6d7128fa674b98d14069d88fc3a
+      spriteID: f5ca5d8f6367eb3489bc1c55d2eca666
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bossidle_2
+      name: bossfloating_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c403338dbb906864ab66dac2b1d0cbf7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossfloating_6
       rect:
         serializedVersion: 2
         x: 0
@@ -154,13 +239,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b73d52aa9075699488204102f9fabe75
+      spriteID: 92208b52cfbd67b418de5067644511de
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bossidle_3
+      name: bossfloating_7
       rect:
         serializedVersion: 2
         x: 64
@@ -174,13 +259,33 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d24d82545fb4fad47a50063f2f5b2c2b
+      spriteID: 8ffb4c2913e1d9445ae745c32b56754b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bossidle_4
+      name: bossfloating_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df55a9883603f764f85496fc2eda5cd7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossfloating_9
       rect:
         serializedVersion: 2
         x: 0
@@ -194,7 +299,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2adf82d5b57dd8d42993be230906ac63
+      spriteID: 31705f7faed4e5f499ba037d1777f751
       vertices: []
       indices: 
       edges: []
@@ -202,7 +307,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 201a995a45118064b881ccffbb190bd5
+    spriteID: 9c1925f0e98019a49af5f3fd9fbdc669
     vertices: []
     indices: 
     edges: []

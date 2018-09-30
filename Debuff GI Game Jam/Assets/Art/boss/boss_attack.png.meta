@@ -1,12 +1,16 @@
 fileFormatVersion: 2
-guid: 40ab623b17c90ed40922c5e8188ad208
+guid: 1f988fcabc83e314cbbdc0d6c3a26181
 TextureImporter:
   fileIDToRecycleName:
-    21300000: bossidle_0
-    21300002: bossidle_1
-    21300004: bossidle_2
-    21300006: bossidle_3
-    21300008: bossidle_4
+    21300000: boss_attack_0
+    21300002: boss_attack_1
+    21300004: boss_attack_2
+    21300006: boss_attack_3
+    21300008: boss_attack_4
+    21300010: boss_attack_5
+    21300012: boss_attack_6
+    21300014: boss_attack_7
+    21300016: boss_attack_8
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -100,13 +104,73 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bossidle_0
+      name: boss_attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bef2bb9efc5ff4d4a86497584a22c017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_attack_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9baa10c8b3ab4224a8ebb45f39bc409a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_attack_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5df06651e4d35e41ac77b943b1662ce
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_attack_3
       rect:
         serializedVersion: 2
         x: 0
         y: 128
-        width: 64
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,19 +178,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b373018a771ad0147bb4709002c0811f
+      spriteID: cbf7104b5d481514ba3473e824084363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bossidle_1
+      name: boss_attack_4
       rect:
         serializedVersion: 2
-        x: 64
+        x: 128
         y: 128
-        width: 64
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,19 +198,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bdae6d7128fa674b98d14069d88fc3a
+      spriteID: bef6fd3b65fcc9d4a8f5820d3d208649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bossidle_2
+      name: boss_attack_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
+        x: 256
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,39 +218,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b73d52aa9075699488204102f9fabe75
+      spriteID: 4c8f4cc5e9dd7c64abaac2e851e06a31
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bossidle_3
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d24d82545fb4fad47a50063f2f5b2c2b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bossidle_4
+      name: boss_attack_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,7 +238,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2adf82d5b57dd8d42993be230906ac63
+      spriteID: 2a0955521985c54489990d933b491b53
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_attack_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fcd0240def335f46ac35dbe3f978bcf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_attack_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84e62e40f0c9bba45a19a96b08de651b
       vertices: []
       indices: 
       edges: []
@@ -202,7 +286,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 201a995a45118064b881ccffbb190bd5
+    spriteID: b9eecf91a9331724db04e5fc7a93874e
     vertices: []
     indices: 
     edges: []
