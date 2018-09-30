@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1438133277133762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 0, z: 0}
+  m_LocalPosition: {x: -2, y: 13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60,6 +60,7 @@ MonoBehaviour:
   minY: -5
   maxY: 5
   minePrefab: {fileID: 1995581689762866, guid: 145d4b92b37ae2d48822b1f9e41b2efb, type: 2}
+  isActive: 0
   mineSpawnDelay: 6
 --- !u!212 &212370789636258436
 SpriteRenderer:
