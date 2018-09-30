@@ -22,10 +22,11 @@ public class PlayerScript : MonoBehaviour {
 	public Sprite fullHeart, halfHeart, noHeart;
 	public bool noTrail = false;
 	protected Level[] levels = new Level[]{
-		new Level("Oasis", new Vector2(-4, 1), new string[]{"Prefabs/gem_prefab 1", "Prefabs/jellyfish_prefab"}, new Vector2[]{new Vector2(-1.4F, 4.3F), new Vector2(8.5F, 0.37F)}),
-		new Level("Level2", new Vector2(1.3F, -3.2F), new string[]{"Prefabs/hourglass", "Prefabs/hourglass", "Prefabs/coral", "Prefabs/coral"}, new Vector2[]{new Vector2(11F, 1F), new Vector2(-8F, 1F), new Vector2(4.5F, -3.5F), new Vector2(-2F, -0.5F)}),
-		new Level("Desert", new Vector2(-4, 2), new string[]{"Prefabs/jellyfish_prefab"}, new Vector2[]{new Vector2(14, 21)})
-
+		new Level("Oasis", new Vector2(0,0), new string[]{"triangle pair"}, new Vector2[]{}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) ,
+	//	new Level("Oasis", new Vector2(-4, 1), new string[]{"Prefabs/gem_prefab 1", "Prefabs/jellyfish_prefab"}, new Vector2[]{new Vector2(-1.4F, 4.3F), new Vector2(8.5F, 0.37F)}),
+	//	new Level("Level2", new Vector2(1.3F, -3.2F), new string[]{"Prefabs/hourglass", "Prefabs/hourglass", "Prefabs/coral", "Prefabs/coral"}, new Vector2[]{new Vector2(11F, 1F), new Vector2(-8F, 1F), new Vector2(4.5F, -3.5F), new Vector2(-2F, -0.5F)}),
+	//	new Level("Desert", new Vector2(-4, 2), new string[]{"Prefabs/jellyfish_prefab"}, new Vector2[]{new Vector2(14, 21)})
+		
 	};
 	public int level = 0;
 	// Use this for initialization
@@ -335,11 +336,13 @@ public class PlayerScript : MonoBehaviour {
 		public string[] objects;
 		public Vector2 start;
 		public Vector2[] locations;
-		public Level(string levelName, Vector2 start, string[] objects, Vector2[] locations){
+		public Vector2[] triangle_locations;
+		public Level(string levelName, Vector2 start, string[] objects, Vector2[] locations, Vector2[] triangle_locations= null ){
 			this.levelName = levelName;
 			this.objects = objects;
 			this.locations = locations;
 			this.start = start;
+			this.triangle_locations = triangle_locations;
 		}
 		public void load(){
 			GameObject[] objects = GameObject.FindObjectsOfType<GameObject> ();
@@ -350,7 +353,7 @@ public class PlayerScript : MonoBehaviour {
 				}
 			}
 			GameObject _prefab = Resources.Load <GameObject> ("Tiles/" + levelName);
-
+			Debug.Log(_prefab);
 			GameObject gridBgPrefab = (GameObject)Instantiate (_prefab, new Vector3(0f,0f,0f), Quaternion.identity);
 			GameObject.Find ("Character").transform.position = start;
 			int index = 0;
@@ -361,10 +364,23 @@ public class PlayerScript : MonoBehaviour {
 
 			}
 			GameObject.Find ("Character").GetComponent<PlayerScript> ().trail.Clear ();
+			int triangle_head = 0;
 			for (int i = 0; i < this.objects.Length; i++){
-				GameObject obj = Resources.Load <GameObject> (this.objects[i]);
-				Instantiate (obj);
-				obj.transform.position = locations[i];
+				if(this.objects[i] == "triangle pair"){
+					//spawn the triangles
+					GameObject obj = Resources.Load<GameObject>("Prefabs/triangle");
+					GameObject obj2 = Resources.Load<GameObject>("Prefabs/triangle2");
+					triangle a_triangle = Instantiate(obj, this.triangle_locations[triangle_head], new Quaternion(0,0,0,0)).gameObject.GetComponent<triangle>();
+					triangle2 a_triangle2 = Instantiate(obj2,this.triangle_locations[triangle_head+1], new Quaternion(0,0,0,0)).gameObject.GetComponent<triangle2>();
+					a_triangle.sibling = a_triangle2;
+					a_triangle2.sibling = a_triangle;
+					triangle_head+=2;
+				}
+				else{ // not instantiating a triangle
+					GameObject obj = Resources.Load <GameObject> (this.objects[i]);
+					Instantiate (obj);
+					obj.transform.position = locations[i];
+				}
 			}
 
 		}
