@@ -21,7 +21,7 @@ public class PlayerScript : MonoBehaviour {
 	public bool lockOnShadow = false;
 	public Sprite fullHeart, halfHeart, noHeart;
 	public bool noTrail = false;
-
+	public int invulnerability = 0;
 	/* *
 	 * String: tilemap name (in Tiles/)
 	 * Vector2: position where player spawns
@@ -30,7 +30,14 @@ public class PlayerScript : MonoBehaviour {
 	 * */
 	protected Level[] levels = new Level[]{
 
+<<<<<<< HEAD
 		//new Level("Oasis", new Vector2(0,0), new string[]{"triangle pair"}, new Vector2[]{}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
+=======
+		new Level("Oasis", new Vector2(0,-4), new string[]{"triangle pair"}, new Vector2[]{}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
+
+		new Level("Oasis", new Vector2(0,0), new string[]{"Prefabs/laser"}, new Vector2[]{new Vector2(0f, 0f), new Vector2(0f, 0f)}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
+
+>>>>>>> d0e348a299c4b7be6e758c65e5f603b9424108ce
 		
 		new Level("Oasis", new Vector2(-4, 1),
 		new string[]{"Prefabs/gem_prefab 1", "Prefabs/jellyfish_prefab"}, // "Prefabs/wurm_prefab"},
@@ -115,7 +122,7 @@ public class PlayerScript : MonoBehaviour {
 		}
 		GameObject[] hourglasses = GameObject.FindGameObjectsWithTag ("Hourglass");
 		foreach (GameObject enemy in hourglasses){
-			if (enemy.GetComponent<SpriteAnim>().loops == 0 && !breakHourglass) {
+			if (enemy.GetComponent<SpriteAnim>().loops == 0 && !breakHourglass) {//if animation is not over, and hourglasses are not broken, we don't get to go
 				portal = false;
 				break;
 			}
@@ -146,8 +153,11 @@ public class PlayerScript : MonoBehaviour {
 	}
 	public bool firstFlag = false;
 	void Update () {
+		invulnerability -= 1;
 		levelUpdate ();
-
+		if (invulnerable > 0) {
+			invulnerable = Mathf.Max (0, invulnerable - Time.deltaTime);
+		}
 		if (rewinding) {
 			if (trail.Count < 1) {
 				rewinding = false;
@@ -214,16 +224,16 @@ public class PlayerScript : MonoBehaviour {
 		GetComponent<Rigidbody2D> ().velocity = mouse;
 		//transform.position = newVec;
 
-		if (Input.GetButtonDown("Vertical")) {
+		if (Input.GetButtonDown("Rewind")) {
 			rewinding = true;
 			//transform.position = ((TimeShadow)trail[trail.Count - 1]).pos;
 			//trail.Clear ();
 		}
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButtonDown (0) && !attacking && !lockOnShadow) {
 			GetComponent<SpriteAnim> ().PlayTemp (1, 1);
 			BasicAttack ();
 		}
-		if (Input.GetMouseButtonDown (1) && trail.Count > 290) {
+		if (Input.GetMouseButtonDown (1) && trail.Count > 290 && !attacking && !lockOnShadow) {
 			ShadowAttack ();
 		}
 		int i = trail.Count;
@@ -285,13 +295,21 @@ public class PlayerScript : MonoBehaviour {
 		public bool flip;
 
 	}
+	float invulnerable = 0;
 	public void Hurt(){
-		if (stunned || attacking)
+		if (stunned || attacking || invulnerable > 0)
 			return;
 		GetComponent<LivingEntity> ().currentHealth--;
 		GetComponent<SpriteAnim> ().PlayTemp (2, 1);
+		invulnerable = 0.5f;
 		if (GetComponent<LivingEntity> ().currentHealth <= 0) {
 			GetComponent<SpriteAnim> ().PlayTemp (2, 1);
+<<<<<<< HEAD
+=======
+			if (GetComponent<LivingEntity> ().currentHealth <= 0) {
+				GetComponent<SpriteAnim> ().PlayTemp (2, 1);
+			}
+>>>>>>> d0e348a299c4b7be6e758c65e5f603b9424108ce
 		}
 	}
 	void ShadowAttack(){
@@ -303,16 +321,16 @@ public class PlayerScript : MonoBehaviour {
 		List<GameObject> hourglasses = new List<GameObject> ();
 
 		foreach (GameObject enemy in enemies){
-			for(int i = shadows.Length - 1; i >= 0; i--) {
+			for(int i = shadows.Length - 1; i >= 0; i--) { // for each shadow
 				GameObject shadow = shadows [i];
-				if (Mathf.Abs ((enemy.transform.position - shadow.transform.position).magnitude) < 1) {
+				if (Mathf.Abs ((enemy.transform.position - shadow.transform.position).magnitude) < 1) { // if it's an enemy:
 					momentum = 0;
-					shadow.GetComponent<SpriteAnim> ().PlayTemp (1, 1);
-					if (enemy.tag.Equals ("Hourglass")) {
+					shadow.GetComponent<SpriteAnim> ().PlayTemp (1, 1); // if it's an hourglass
+					if (enemy.tag.Equals ("Hourglass")) { 
 						enemy.GetComponent<SpriteAnim> ().PlayTemp (1, 1);
-						hourglasses.Add (enemy);
+						hourglasses.Add (enemy); // add to the list of hourglasses
 					}
-					else
+					else // if not an hourglass, just damage it
 						enemy.GetComponent<LivingEntity> ().Hurt();
 					lockOnShadow = true;
 					break;
@@ -320,8 +338,8 @@ public class PlayerScript : MonoBehaviour {
 			}
 		}
 
-		if (hourglasses.Count >= GameObject.FindGameObjectsWithTag ("Hourglass").Length) {
-			breakHourglass = true;
+		if (hourglasses.Count >= GameObject.FindGameObjectsWithTag ("Hourglass").Length) { // if we get all hourglasse:
+			breakHourglass = true; // trigger the hourglass animation
 		}
 
 

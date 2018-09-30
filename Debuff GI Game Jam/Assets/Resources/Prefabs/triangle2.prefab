@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212712008832395752}
   - component: {fileID: 114412822077584146}
   - component: {fileID: 114943866018617262}
+  - component: {fileID: 114567858124706716}
   - component: {fileID: 114451339457442558}
   - component: {fileID: 114836349128641172}
   m_Layer: 0
@@ -39,7 +40,7 @@ Transform:
   m_GameObject: {fileID: 1581899640182384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 34.411346, y: -3.390836, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -58,6 +59,8 @@ MonoBehaviour:
   sibling: {fileID: 0}
   other_triangle: {fileID: 114902165247677270, guid: 3d0ddca482ae24943bf57a30eb9e9584,
     type: 2}
+  min: {x: -8, y: -1.5}
+  max: {x: 8, y: 0.5}
 --- !u!114 &114451339457442558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -79,9 +82,21 @@ MonoBehaviour:
     - {fileID: 21300006, guid: 44bbb40286b40cc478cf786baf352638, type: 3}
     - {fileID: 21300008, guid: 44bbb40286b40cc478cf786baf352638, type: 3}
     speed: 0.1
+  - AnimationName: Death
+    Anim_Sprites:
+    - {fileID: 21300000, guid: 44bbb40286b40cc478cf786baf352638, type: 3}
+    - {fileID: 21300002, guid: 44bbb40286b40cc478cf786baf352638, type: 3}
+    - {fileID: 21300004, guid: 44bbb40286b40cc478cf786baf352638, type: 3}
+    - {fileID: 21300006, guid: 44bbb40286b40cc478cf786baf352638, type: 3}
+    - {fileID: 21300008, guid: 44bbb40286b40cc478cf786baf352638, type: 3}
+    speed: 0.1
   loops: 0
   prevID: 0
+<<<<<<< HEAD
 --- !u!114 &114836349128641172
+=======
+--- !u!114 &114567858124706716
+>>>>>>> d0e348a299c4b7be6e758c65e5f603b9424108ce
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,7 +111,11 @@ MonoBehaviour:
     type: 2}
   projectileSpeed: 100
   bulletLifespan: 1
+<<<<<<< HEAD
   aggroDistance: 5
+=======
+  aggroDistance: 7
+>>>>>>> d0e348a299c4b7be6e758c65e5f603b9424108ce
   shootDelay: 3
 --- !u!114 &114943866018617262
 MonoBehaviour:
