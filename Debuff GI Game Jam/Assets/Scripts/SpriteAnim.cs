@@ -69,6 +69,7 @@ public class SpriteAnim : MonoBehaviour
 						if (gameObject.GetComponent<LivingEntity> ()) {
 							if (gameObject.GetComponent<LivingEntity> ().currentHealth <= 0 && AnimationSets[ID].AnimationName.Equals("Death")) {
 								gameObject.SetActive (false);
+								yield break;
 							}
 						}
 						if (gameObject.tag.Equals ("Player") && ID == 2) {
@@ -92,6 +93,7 @@ public class SpriteAnim : MonoBehaviour
 
 						if (gameObject.tag.Equals ("Waypoint")) {
 							gameObject.SetActive (false);
+							yield break;
 						}
 					}
 				}

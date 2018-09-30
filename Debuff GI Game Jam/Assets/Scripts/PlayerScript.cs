@@ -30,7 +30,7 @@ public class PlayerScript : MonoBehaviour {
 	 * */
 	protected Level[] levels = new Level[]{
 
-		new Level("Oasis", new Vector2(0,-4), new string[]{"triangle pair"}, new Vector2[]{}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
+
 
 		new Level("Oasis", new Vector2(0,0), new string[]{"Prefabs/laser"}, new Vector2[]{new Vector2(0f, 0f), new Vector2(0f, 0f)}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
 
@@ -42,10 +42,16 @@ public class PlayerScript : MonoBehaviour {
 		new Level("Level2", new Vector2(1.3F, -3.2F),
 		new string[]{"Prefabs/hourglass", "Prefabs/hourglass", "Prefabs/wurm"},
 			new Vector2[]{new Vector2(11F, 1F), new Vector2(-8F, 1F), new Vector2(0, 0)}),
-			
+
 		new Level("Desert", new Vector2(-4, 2),
 		new string[]{"Prefabs/jellyfish_prefab"},
-		new Vector2[]{new Vector2(14, 21)})
+		new Vector2[]{new Vector2(14, 21)}),
+
+		new Level("Oasis", new Vector2(0,-4), new string[]{"triangle pair"}, new Vector2[]{}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
+
+		new Level("BossFight", new Vector2(-2, -7),
+			new string[]{"Prefabs/jellyfish_prefab"},
+			new Vector2[]{new Vector2(14, 21)})
 
 	};
 	public int level = 0;
@@ -143,6 +149,7 @@ public class PlayerScript : MonoBehaviour {
 				return;
 			}
 			levels [level].load ();
+			stunned = false;
 			breakHourglass = false;
 			GetComponent<SpriteAnim> ().PlayTemp (2, 4);
 		}
@@ -169,8 +176,7 @@ public class PlayerScript : MonoBehaviour {
 			return;
 		}
 		UpdateHealthBar ();
-		if (stunned)
-			return;
+
 		if (lockOnShadow) {
 			foreach (GameObject obj in shadows) {
 				if (obj.GetComponent<SpriteAnim> ().loops > 0) {
@@ -214,7 +220,8 @@ public class PlayerScript : MonoBehaviour {
 
 			}
 		}
-
+		if (level == levels.Length - 1)
+			Debug.Log ("Moving");
 		mouse *= ((baseSpeed) * speedMod);// * (1 + Mathf.Sqrt(momentum * 0.05F));
 
 		GetComponent<Rigidbody2D> ().velocity = mouse;
