@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212712008832395752}
   - component: {fileID: 114412822077584146}
   - component: {fileID: 114943866018617262}
+  - component: {fileID: 114451339457442558}
   m_Layer: 0
   m_Name: triangle2
   m_TagString: Enemy
@@ -56,6 +57,29 @@ MonoBehaviour:
   sibling: {fileID: 0}
   other_triangle: {fileID: 114902165247677270, guid: 3d0ddca482ae24943bf57a30eb9e9584,
     type: 2}
+--- !u!114 &114451339457442558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1581899640182384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf7cb816e63aad046ba93478371e66f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimatedGameObject: {fileID: 0}
+  AnimationSets:
+  - AnimationName: idle
+    Anim_Sprites:
+    - {fileID: 21300000, guid: 44bbb40286b40cc478cf786baf352638, type: 3}
+    - {fileID: 21300002, guid: 44bbb40286b40cc478cf786baf352638, type: 3}
+    - {fileID: 21300004, guid: 44bbb40286b40cc478cf786baf352638, type: 3}
+    - {fileID: 21300006, guid: 44bbb40286b40cc478cf786baf352638, type: 3}
+    - {fileID: 21300008, guid: 44bbb40286b40cc478cf786baf352638, type: 3}
+    speed: 0.1
+  loops: 0
+  prevID: 0
 --- !u!114 &114943866018617262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,12 +128,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b555063ee3b3e9545b9152f58b4b3e5f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44bbb40286b40cc478cf786baf352638, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.31, y: 0.25}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
