@@ -25,8 +25,7 @@ GameObject:
   - component: {fileID: 60008725320602746}
   - component: {fileID: 114110688689846304}
   - component: {fileID: 114870309157557040}
-  - component: {fileID: 114740506837171178}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: jellyfish_prefab
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -118,18 +117,6 @@ MonoBehaviour:
     speed: 0.2
   loops: 0
   prevID: 0
---- !u!114 &114740506837171178
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1266860837989960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0e51181f3711f64d93828f592f5dc76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
 --- !u!114 &114870309157557040
 MonoBehaviour:
   m_ObjectHideFlags: 1
