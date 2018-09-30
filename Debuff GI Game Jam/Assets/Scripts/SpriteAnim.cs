@@ -33,6 +33,9 @@ public class SpriteAnim : MonoBehaviour
 		StartCoroutine ("AnimateSprite", ID);
 
 	}
+	public void StopAnimation(){
+		StopCoroutine ("AnimateSprite");
+	}
 	public void PlayAnimation (int ID)
 	{
 		

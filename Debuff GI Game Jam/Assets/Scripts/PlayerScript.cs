@@ -61,10 +61,11 @@ public class PlayerScript : MonoBehaviour {
 			hearts [2].sprite = noHeart;
 		}
 	}
+	bool prePortalAnim = false;
 	void levelUpdate(){
 		bool portal = true;
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
-		if (GetComponent<SpriteAnim> ().loops > 0 || lockOnShadow)
+		if (GetComponent<SpriteAnim> ().loops > 0 || lockOnShadow || (noTrail && trail.Count > 0))
 			portal = false;
 		foreach (GameObject enemy in enemies){
 			if (enemy.activeSelf) {
@@ -80,6 +81,18 @@ public class PlayerScript : MonoBehaviour {
 			}
 		}
 		if (portal) {
+			if (!noTrail) {
+				
+
+				noTrail = true;
+				return;
+			}
+			if (noTrail && !prePortalAnim) {
+				GetComponent<SpriteAnim> ().PlayTemp (4, 1);
+				prePortalAnim = true;
+				return;
+			}
+
 			++level;
 			if (level >= levels.Length) {
 				SceneManager.LoadScene ("MainMenu");
@@ -100,7 +113,7 @@ public class PlayerScript : MonoBehaviour {
 			GetComponent<SpriteRenderer> ().flipX = shadow.flip;
 			transform.position = shadow.pos;
 			//trail.Remove (0);
-			trail.RemoveRange (0, Mathf.Max(1, Mathf.Min(trail.Count - 1, 20)));
+			trail.RemoveRange (0, Mathf.Max(1, Mathf.Min(trail.Count - 1, 80)));
 			if (trail.Count == 0)
 				rewinding = false;
 			return;
@@ -117,7 +130,8 @@ public class PlayerScript : MonoBehaviour {
 		}
 		//FixedUpdate ();
 		Vector2 mouse = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position;
-
+		if (noTrail)
+			mouse = Vector2.zero;
 		GetComponent<SpriteRenderer> ().flipX = mouse.x > 0;
 		float mag = mouse.magnitude;
 		if (mouse.magnitude > 1.0f) {
@@ -173,10 +187,12 @@ public class PlayerScript : MonoBehaviour {
 			}
 		}
 	}
+	bool noTrail = false;
 	void FixedUpdate () {
+		
 		if (rewinding)
 			return;
-		if (GetComponent<Rigidbody2D> ().velocity.magnitude < 0.5) {
+		if (GetComponent<Rigidbody2D> ().velocity.magnitude < 0.5 || noTrail) {
 			if (trail.Count > 0) {
 				trail.RemoveRange (trail.Count - Mathf.Min(trail.Count, 7), Mathf.Min(trail.Count, 7));
 			}
@@ -272,17 +288,21 @@ public class PlayerScript : MonoBehaviour {
 			GameObject[] objects = GameObject.FindObjectsOfType<GameObject> ();
 			foreach (GameObject o in objects) {
 				if (!o.tag.Equals ("MainCamera") && !o.tag.Equals ("Player") && !o.tag.Equals("Shadow") && o.layer != 5) {
+					o.SetActive (false);
 					Destroy (o);
 				}
 			}
 			GameObject _prefab = Resources.Load <GameObject> ("Tiles/" + levelName);
-			if (_prefab == null) {
-				Debug.Log ("IS NULL");
-			} else {
-				Debug.Log ("INSTANTIATE");
-			}
+
 			GameObject gridBgPrefab = (GameObject)Instantiate (_prefab, new Vector3(0f,0f,0f), Quaternion.identity);
 			GameObject.Find ("Character").transform.position = start;
+			int index = 0;
+			if (GameObject.Find ("Character").GetComponent<PlayerScript> ().shadows [0].GetComponent<SpriteAnim> ().loops > 0)
+				index = 1;
+			foreach (GameObject shadow in GameObject.Find ("Character").GetComponent<PlayerScript> ().shadows) {
+				shadow.GetComponent<SpriteRenderer> ().sprite = GameObject.Find ("Character").GetComponent<PlayerScript> ().shadows [index].GetComponent<SpriteRenderer> ().sprite;
+
+			}
 			GameObject.Find ("Character").GetComponent<PlayerScript> ().trail.Clear ();
 			for (int i = 0; i < this.objects.Length; i++){
 				GameObject obj = Resources.Load <GameObject> (this.objects[i]);
