@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpriteAnim : MonoBehaviour
 {
@@ -65,8 +66,15 @@ public class SpriteAnim : MonoBehaviour
 				if (loops > 0) {
 					loops--;
 					if (loops == 0) {
-						if (ID == 1 && gameObject.tag.Equals ("Player")) {
-							
+						if (gameObject.GetComponent<LivingEntity> ()) {
+							if (gameObject.GetComponent<LivingEntity> ().currentHealth <= 0) {
+								gameObject.SetActive (false);
+							}
+						}
+						if (gameObject.tag.Equals ("Player") && ID == 2) {
+							if (gameObject.GetComponent<LivingEntity> ().currentHealth <= 0) {
+								SceneManager.LoadScene ("MainMenu");
+							}
 						}
 						ID = prevID;
 						/*
