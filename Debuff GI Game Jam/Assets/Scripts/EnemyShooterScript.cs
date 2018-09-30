@@ -10,8 +10,8 @@ public class EnemyShooterScript : MonoBehaviour {
 	public float bulletLifespan = 1.0f;
 	public float aggroDistance = 7.0f;
 	
-	public float shootDelay = 1;
-	private float delay = 1;
+	public float shootDelay;
+	private float delay = 0;
 
 	// Use this for initialization
 	void Start () {
