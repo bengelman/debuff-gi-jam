@@ -21,7 +21,7 @@ public class PlayerScript : MonoBehaviour {
 	public bool lockOnShadow = false;
 	public Sprite fullHeart, halfHeart, noHeart;
 	public bool noTrail = false;
-
+	public int invulnerability = 0;
 	/* *
 	 * String: tilemap name (in Tiles/)
 	 * Vector2: position where player spawns
@@ -31,6 +31,9 @@ public class PlayerScript : MonoBehaviour {
 	protected Level[] levels = new Level[]{
 
 		new Level("Oasis", new Vector2(0,-4), new string[]{"triangle pair"}, new Vector2[]{}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
+
+		new Level("Oasis", new Vector2(0,0), new string[]{"Prefabs/laser"}, new Vector2[]{new Vector2(0f, 0f), new Vector2(0f, 0f)}, new Vector2[]{new Vector2(-2f, 0f), new Vector2(2f, 0f)}) , // test triangle spawning
+
 		
 		new Level("Oasis", new Vector2(-4, 1),
 		new string[]{"Prefabs/gem_prefab 1", "Prefabs/jellyfish_prefab"}, // "Prefabs/wurm_prefab"},
@@ -146,6 +149,7 @@ public class PlayerScript : MonoBehaviour {
 	}
 	public bool firstFlag = false;
 	void Update () {
+		invulnerability -= 1;
 		levelUpdate ();
 		if (invulnerable > 0) {
 			invulnerable = Mathf.Max (0, invulnerable - Time.deltaTime);
@@ -296,6 +300,9 @@ public class PlayerScript : MonoBehaviour {
 		invulnerable = 0.5f;
 		if (GetComponent<LivingEntity> ().currentHealth <= 0) {
 			GetComponent<SpriteAnim> ().PlayTemp (2, 1);
+			if (GetComponent<LivingEntity> ().currentHealth <= 0) {
+				GetComponent<SpriteAnim> ().PlayTemp (2, 1);
+			}
 		}
 	}
 	void ShadowAttack(){
