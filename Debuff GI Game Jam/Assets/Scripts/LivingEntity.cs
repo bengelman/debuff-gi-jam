@@ -12,30 +12,24 @@ public class LivingEntity : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (currentHealth <= 0) {
+			Death ();
+		}
 	}
 	void Death(){
-		if (!GetComponent<PlayerScript> ()) {
-			GetComponent<SpriteAnim> ().PlayTemp (GetComponent<SpriteAnim>().AnimationSets.Length - 1, 1);
-		}
-			
+		if (!GetComponent<PlayerScript>())
+			gameObject.SetActive (false);
 	}
 	public void Hurt(){
 		if (GetComponent<EnemyPopup> ()) {
 			if (GetComponent<EnemyPopup> ().isUp) {
 				currentHealth--;
-				if (currentHealth <= 0) {
-					Death ();
-				}
 			}
 		}
 		else if (GetComponent<PlayerScript> ()) {
 			GetComponent<PlayerScript> ().Hurt ();
 		} else {
 			currentHealth--;
-			if (currentHealth <= 0) {
-				Death ();
-			}
 		}
 	}
 }

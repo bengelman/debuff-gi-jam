@@ -21,8 +21,6 @@ public class EnemyPopup : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (GetComponent<LivingEntity> ().currentHealth <= 0)
-			return;
 		if (isUp == false) {
 			if (downTimeDelay <= 0) {
 				// change to active
