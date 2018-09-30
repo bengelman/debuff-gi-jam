@@ -24,6 +24,9 @@ public class LivingEntity : MonoBehaviour {
 		if (GetComponent<EnemyPopup> ()) {
 			if (GetComponent<EnemyPopup> ().isUp) {
 				currentHealth--;
+				if (currentHealth <= 0) {
+					Death ();
+				}
 			}
 		}
 		else if (GetComponent<PlayerScript> ()) {
