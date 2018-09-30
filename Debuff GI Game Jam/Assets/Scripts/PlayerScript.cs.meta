@@ -3,7 +3,14 @@ guid: 2dc3b9f2d5970df4e944da4c9c9cc9ec
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - collisionDetection: {instanceID: 0}
+  - shadow: {fileID: 1597573192874728, guid: d11d4ebb8217e534994dac77c3eefc3e, type: 2}
+  - mainCamera: {fileID: 20743581336348972, guid: 38049fbd80b298c4a8baad004c461c48,
+      type: 2}
+  - fullHeart: {fileID: 21300000, guid: e798c59baa5931c4da869d0e084b9677, type: 3}
+  - halfHeart: {fileID: 21300000, guid: cc7a798440ae9a94b897b1d9dd335573, type: 3}
+  - noHeart: {fileID: 21300000, guid: 5b8a6c39fc41fd44e8d5398569a73870, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

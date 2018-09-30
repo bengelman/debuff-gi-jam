@@ -107,7 +107,7 @@ public class PlayerScript : MonoBehaviour {
 			}
 		}
 
-		mouse *= ((baseSpeed) * speedMod) * (1 + Mathf.Sqrt(momentum * 0.1F));
+		mouse *= ((baseSpeed) * speedMod) * (1 + Mathf.Sqrt(momentum * 0.1F))*2;
 
 		GetComponent<Rigidbody2D> ().velocity = mouse;
 		//transform.position = newVec;
