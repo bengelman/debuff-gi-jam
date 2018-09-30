@@ -10,8 +10,8 @@ public class EnemyShooterScript : MonoBehaviour {
 	public float bulletLifespan = 1.0f;
 	public float aggroDistance = 7.0f;
 	
-	public float shootDelay;
-	private float delay = 0;
+	public float shootDelay = 1;
+	private float delay = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -41,7 +41,7 @@ public class EnemyShooterScript : MonoBehaviour {
 		// check if certain time has passed before enemy can shoot
 		if (delay <= 0) {
 			// create bullet
-			Debug.Log("Shooting");
+			//Debug.Log("Shooting");
 			Rigidbody2D projectileInstance;
 			projectileInstance = Instantiate(projectile, gameObject.transform);
 			projectileInstance.transform.position = gameObject.transform.position;

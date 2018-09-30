@@ -607,7 +607,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: TIMESICK
+  m_Text: Name TBD
 --- !u!222 &1755785041
 CanvasRenderer:
   m_ObjectHideFlags: 0
