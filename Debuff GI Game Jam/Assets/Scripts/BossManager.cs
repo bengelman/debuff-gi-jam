@@ -61,9 +61,8 @@ public class BossManager : MonoBehaviour {
 			if (col.gameObject.GetComponent<PlayerScript> ()) { // if it has a player script
 				col.gameObject.GetComponent<LivingEntity> ().Hurt ();
 				GetComponent<SpriteAnim> ().PlayTemp (2, 1);
-				//knocks back the target
-				// Debug.Log(col.gameObject.transform.position);
-				// Debug.Log(this.transform.position);
+
+                // knockpack player
 				Vector2 knockback = -(this.transform.position-col.gameObject.transform.position);
 				knockback.Normalize ();
 				knockback *= 3;

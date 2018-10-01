@@ -15,7 +15,9 @@ public class LivingEntity : MonoBehaviour {
 		
 	}
 	void Death(){
-		GetComponent<SpriteAnim> ().PlayTemp (GetComponent<SpriteAnim>().AnimationSets.Length - 1,1);
+        int deathAnimNumber = GetComponent<SpriteAnim>().AnimationSets.Length - 1;
+        GetComponent<SpriteAnim> ().PlayTemp (deathAnimNumber,1);
+        Destroy(gameObject, 0.8F);
 	}
 	public void Hurt(){
 		if (GetComponent<EnemyPopup> ()) {
